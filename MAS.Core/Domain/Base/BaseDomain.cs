@@ -7,7 +7,7 @@ namespace MAS.Core.Domain.Base
 {
     public abstract class BaseDomain<DataType> : IEntity<DataType>
     {
-        public DataType ID { get; set; }
+        public DataType ID { get; set;}
     }
 
     public abstract class BaseDomain : BaseDomain<int> { }
