@@ -82,10 +82,10 @@ namespace MAS.Web.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            _IndentService.DeleteIndent(id);
+            _IndentService.DeleteIndent(id) ;
             
 
-            return Ok();
+            return Ok() ;
         }
 
 
