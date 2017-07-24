@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v1.1",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v1.1": {
+      "mas.application/1.0.0": {
+        "dependencies": {
+          "MAS.Core": "1.0.0"
+        },
+        "runtime": {
+          "MAS.Application.dll": {}
+        }
+      },
+      "mas.core/1.0.0": {
+        "runtime": {
+          "MAS.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "mas.application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "mas.core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
