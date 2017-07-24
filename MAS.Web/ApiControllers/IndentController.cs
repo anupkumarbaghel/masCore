@@ -16,7 +16,7 @@ namespace MAS.Web.ApiControllers
         private readonly IIendentService _IndentService;
         public IndentController(IIendentService indentService)
         {
-            _IndentService = indentService;
+            _IndentService = indentService ;
         }
 
         [HttpGet]
