@@ -10,30 +10,30 @@ using MAS.Core.Domain.Indent;
 namespace MAS.Web.ApiControllers
 {
     [Produces("application/json")]
-    [Route("api/Indent")]
-    public class IndentController : Controller
+    [Route("api/IndentTable")]
+    public class IndentTableController : Controller
     {
-        private readonly IIendentService _IndentService;
-        public IndentController(IIendentService indentService)
+        private readonly IIndentTableAppService _IndentTableAppService;
+        public IndentTableController(IIndentTableAppService indentTableAppService)
         {
-            _IndentService = indentService ;
+            _IndentTableAppService = indentTableAppService;
         }
 
         [HttpGet]
-        public IEnumerable<Indent> GetAllIndent()
+        public IActionResult GetAllIndentTable()
         {
-            return  _IndentService.GetAllIndent();
+            return Ok(_IndentTableAppService.GetAllIndentTable());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetIndent([FromRoute] int id)
+        public IActionResult GetIndentTable([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var indent = _IndentService.GetIndent(id);
+            var indent = _IndentTableAppService.GetIndentTable(id);
 
             if (indent == null)
             {
@@ -44,45 +44,45 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpPost]
-        public IActionResult PostIndent([FromBody] Indent indent)
+        public IActionResult PostIndentTable([FromBody] IndentTable indentTable)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _IndentService.CreateIndent(indent);
+            _IndentTableAppService.CreateIndentTable(indentTable);
 
             return Ok();
         }
 
         [HttpPut("{id}")]
-        public IActionResult PutIndent([FromRoute] int id, [FromBody] Indent indent)
+        public IActionResult PutIndentTable([FromRoute] int id, [FromBody] IndentTable indentTable)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != indent.ID)
+            if (id != indentTable.ID)
             {
                 return BadRequest();
             }
 
-            _IndentService.UpdateIndent(indent);
+            _IndentTableAppService.UpdateIndentTable(indentTable);
             
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteIndent([FromRoute] long id)
+        public IActionResult DeleteIndentTable([FromRoute] long id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            return Ok( _IndentService.DeleteIndent(id)) ;
+           return Ok(_IndentTableAppService.DeleteIndentTable(id)) ;
             
         }
 

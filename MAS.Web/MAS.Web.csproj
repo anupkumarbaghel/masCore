@@ -47,8 +47,5 @@
     <ProjectReference Include="..\MAS.Core\MAS.Core.csproj" />
     <ProjectReference Include="..\MAS.Repository\MAS.Repository.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApiControllers\" />
-  </ItemGroup>
 
 </Project>
