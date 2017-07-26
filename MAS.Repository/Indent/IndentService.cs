@@ -42,6 +42,11 @@ namespace MAS.Repository.Indent
             return _context.Indents.SingleOrDefault(e => e.ID == id);
         }
 
+        public Core.Domain.Indent.Indent GetIndentByStatus(string IndentStatus)
+        {
+            return _context.Indents.SingleOrDefault(e => e.IndentStatus == IndentStatus);
+        }
+
         public void UpdateIndent(Core.Domain.Indent.Indent indent)
         {
             _context.Entry(indent).State = EntityState.Modified;

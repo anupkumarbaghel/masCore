@@ -51,9 +51,9 @@ namespace MAS.Web.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            _IndentTableAppService.CreateIndentTable(indentTable);
+           long ID =  _IndentTableAppService.CreateIndentTable(indentTable);
 
-            return Ok();
+            return Ok(ID);
         }
 
         [HttpPut("{id}")]

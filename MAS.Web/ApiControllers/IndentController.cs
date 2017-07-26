@@ -42,6 +42,24 @@ namespace MAS.Web.ApiControllers
 
             return Ok(indent);
         }
+        
+        [HttpGet("bystatus")]
+        public IActionResult GetIndentByStatus([FromQuery] string IndentStatus)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var indent = _IndentService.GetIndentByStatus(IndentStatus);
+
+            if (indent == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(indent);
+        }
 
         [HttpPost]
         public IActionResult PostIndent([FromBody] Indent indent)
@@ -51,9 +69,9 @@ namespace MAS.Web.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            _IndentService.CreateIndent(indent);
+           long ID =  _IndentService.CreateIndent(indent);
 
-            return Ok();
+            return Ok(ID);
         }
 
         [HttpPut("{id}")]

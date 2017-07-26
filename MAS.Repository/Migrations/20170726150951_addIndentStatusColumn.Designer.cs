@@ -8,9 +8,10 @@ using MAS.Repository;
 namespace MAS.Repository.Migrations
 {
     [DbContext(typeof(MASDBContext))]
-    partial class MASDBContextModelSnapshot : ModelSnapshot
+    [Migration("20170726150951_addIndentStatusColumn")]
+    partial class addIndentStatusColumn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

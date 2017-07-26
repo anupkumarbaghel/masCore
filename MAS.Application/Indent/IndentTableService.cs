@@ -18,6 +18,11 @@ namespace MAS.Application.Indent
 
         public long CreateIndentTable(IndentTable indentTable)
         {
+            if (indentTable.ID > 0)
+            {
+                UpdateIndentTable(indentTable);
+                return indentTable.ID;
+            }
             return _IndentTableService.CreateIndentTable(indentTable);
         }
 

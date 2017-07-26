@@ -18,6 +18,12 @@ namespace MAS.Application.Indent
 
         public long CreateIndent(Core.Domain.Indent.Indent indent)
         {
+            if (indent.ID > 0)
+            {
+                UpdateIndent(indent);
+                return indent.ID;
+            }
+            indent.IndentStatus = "o";
             return _IndentService.CreateIndent(indent);
         }
 
@@ -34,6 +40,11 @@ namespace MAS.Application.Indent
         public Core.Domain.Indent.Indent GetIndent(int id)
         {
             return _IndentService.GetIndent(id);
+        }
+
+        public Core.Domain.Indent.Indent GetIndentByStatus(string IndentStatus)
+        {
+            return _IndentService.GetIndentByStatus(IndentStatus);
         }
 
         public void UpdateIndent(Core.Domain.Indent.Indent indent)
