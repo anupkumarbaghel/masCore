@@ -11,6 +11,7 @@ namespace MAS.Core.Domain.Indent
     {
         [StringLength(200)]
         public virtual string IndentNumber { get; set; }
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:MM/dd/yyyy}")]
         public virtual DateTime? IndentDate { get; set; }
         [StringLength(200)]
         public virtual string ProvidedTo { get; set; }

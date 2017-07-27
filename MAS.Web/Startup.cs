@@ -30,7 +30,10 @@ namespace MAS.Web
         {
             services.AddCors();
             // Add framework services.
-            services.AddMvc();
+            services.AddMvc().AddJsonOptions(opt =>
+            {
+                opt.SerializerSettings.DateFormatString = "yyyy-MM-dd";
+            }); ;
 
             services.RegisterDependencies();
         }
