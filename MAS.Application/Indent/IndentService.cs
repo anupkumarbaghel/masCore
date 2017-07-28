@@ -18,11 +18,11 @@ namespace MAS.Application.Indent
 
         public long CreateIndent(Core.Domain.Indent.Indent indent)
         {
-            if (indent.ID > 0)
-            {
-                UpdateIndent(indent);
-                return indent.ID;
-            }
+            //if (indent.ID > 0)
+            //{
+            //    UpdateIndent(indent);
+            //    return indent.ID;
+            //}
             indent.IndentStatus = "o";
             return _IndentService.CreateIndent(indent);
         }

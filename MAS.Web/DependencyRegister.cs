@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 
 
+
 namespace MAS.Web
 {
     public static class DependencyRegister
@@ -15,7 +16,7 @@ namespace MAS.Web
             services.AddScoped<Core.Interface.Repository.Indent.IIendentRepositoryService,Repository.Indent.IndentRepositoryService>();
             services.AddScoped<Core.Interface.Application.Indent.IIndentTableAppService, Application.Indent.IndentTableService>();
             services.AddScoped<Core.Interface.Repository.Indent.IIendentTableRepositoryService, Repository.Indent.IndentTableRepositoryService>();
-            services.AddDbContext<Repository.MASDBContext>();
+           
 
             return services;
         }

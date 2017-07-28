@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MAS.Core.Interface;
+using Microsoft.EntityFrameworkCore;
 
 namespace MAS.Web
 {
@@ -35,7 +36,9 @@ namespace MAS.Web
                 opt.SerializerSettings.DateFormatString = "yyyy-MM-dd";
             }); ;
 
+            
             services.RegisterDependencies();
+            services.AddDbContext<Repository.MASDBContext>(opts => opts.UseSqlServer(Configuration.GetConnectionString("MASConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

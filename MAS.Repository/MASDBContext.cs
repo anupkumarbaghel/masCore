@@ -9,9 +9,9 @@ namespace MAS.Repository
 {
     public class MASDBContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public MASDBContext(DbContextOptions<MASDBContext> options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=MASDB;Trusted_Connection=True;MultipleActiveResultSets=true");
+
         }
 
         public DbSet<MAS.Core.Domain.Indent.Indent> Indents { get; set; }
