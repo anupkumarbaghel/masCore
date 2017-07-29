@@ -16,15 +16,9 @@ namespace MAS.Application.Indent
             _IndentService = indentService;
         }
 
-        public long CreateIndent(Core.Domain.Indent.Indent indent)
+        public Core.Domain.Indent.Indent CreateEditIndent(Core.Domain.Indent.Indent indent)
         {
-            //if (indent.ID > 0)
-            //{
-            //    UpdateIndent(indent);
-            //    return indent.ID;
-            //}
-            indent.IndentStatus = "o";
-            return _IndentService.CreateIndent(indent);
+            return _IndentService.CreateEditIndent(indent);
         }
 
         public long DeleteIndent(long ID)
@@ -42,14 +36,11 @@ namespace MAS.Application.Indent
             return _IndentService.GetIndent(id);
         }
 
-        public Core.Domain.Indent.Indent GetIndentByStatus(string IndentStatus)
+        public Core.Domain.Indent.Indent GetOpenIndent()
         {
-            return _IndentService.GetIndentByStatus(IndentStatus);
+            return _IndentService.GetOpenIndent();
         }
 
-        public void UpdateIndent(Core.Domain.Indent.Indent indent)
-        {
-            _IndentService.UpdateIndent(indent);
-        }
+        
     }
 }

@@ -14,8 +14,7 @@ namespace MAS.Web
         {
             services.AddScoped<Core.Interface.Application.Indent.IIendentService, Application.Indent.IndentService>();
             services.AddScoped<Core.Interface.Repository.Indent.IIendentRepositoryService,Repository.Indent.IndentRepositoryService>();
-            services.AddScoped<Core.Interface.Application.Indent.IIndentTableAppService, Application.Indent.IndentTableService>();
-            services.AddScoped<Core.Interface.Repository.Indent.IIendentTableRepositoryService, Repository.Indent.IndentTableRepositoryService>();
+           
            
 
             return services;

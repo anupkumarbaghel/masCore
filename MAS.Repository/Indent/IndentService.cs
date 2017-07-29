@@ -13,13 +13,23 @@ namespace MAS.Repository.Indent
         public IndentRepositoryService(MASDBContext context)
         {
             _context = context;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public long CreateIndent(Core.Domain.Indent.Indent indent)
+        public Core.Domain.Indent.Indent CreateEditIndent(Core.Domain.Indent.Indent indent)
         {
-            _context.Indents.Add(indent);
+            if (indent.ID > 0)
+            {
+                _context.Update(indent);
+            }
+            else
+            {
+                indent.IndentStatus = "o";
+                _context.Add(indent);
+            }
+           
             _context.SaveChanges();
-            return indent.ID;
+            return indent;
         }
 
         public long DeleteIndent(long ID)
@@ -42,15 +52,11 @@ namespace MAS.Repository.Indent
             return _context.Indents.SingleOrDefault(e => e.ID == id);
         }
 
-        public Core.Domain.Indent.Indent GetIndentByStatus(string IndentStatus)
+        public Core.Domain.Indent.Indent GetOpenIndent()
         {
-            return _context.Indents.Include(e=>e.IndentTableCollection).SingleOrDefault(e => e.IndentStatus == IndentStatus);
+            return _context.Indents.Include(e=>e.IndentTableCollection).SingleOrDefault(e => e.IndentStatus == "o");
         }
 
-        public void UpdateIndent(Core.Domain.Indent.Indent indent)
-        {
-            _context.Entry(indent).State = EntityState.Modified;
-            _context.SaveChanges();
-        }
+       
     }
 }

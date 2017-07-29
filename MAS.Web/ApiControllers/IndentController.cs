@@ -20,9 +20,10 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet]
-        public IEnumerable<Indent> GetAllIndent()
+        public IActionResult GetAllIndent()
         {
-            return  _IndentService.GetAllIndent();
+
+            return Ok(_IndentService.GetAllIndent());
         }
 
         [HttpGet("{id}")]
@@ -43,15 +44,15 @@ namespace MAS.Web.ApiControllers
             return Ok(indent);
         }
         
-        [HttpGet("bystatus")]
-        public IActionResult GetIndentByStatus([FromQuery] string IndentStatus)
+        [HttpGet("openindent")]
+        public IActionResult GetOpenIndent()
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var indent = _IndentService.GetIndentByStatus(IndentStatus);
+            var indent = _IndentService.GetOpenIndent();
 
             if (indent == null)
             {
@@ -68,29 +69,10 @@ namespace MAS.Web.ApiControllers
             {
                 return BadRequest(ModelState);
             }
-
-           long ID =  _IndentService.CreateIndent(indent);
-
-            return Ok(ID);
+            return Ok(_IndentService.CreateEditIndent(indent));
         }
 
-        [HttpPut("{id}")]
-        public IActionResult PutIndent([FromRoute] int id, [FromBody] Indent indent)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != indent.ID)
-            {
-                return BadRequest();
-            }
-
-            _IndentService.UpdateIndent(indent);
-            
-            return NoContent();
-        }
+       
 
         [HttpDelete("{id}")]
         public IActionResult DeleteIndent([FromRoute] long id)
