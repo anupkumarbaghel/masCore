@@ -20,10 +20,9 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet]
-        public IActionResult GetAllIndent()
+        public IActionResult GetAllIndentByStatus(string indentStatus)
         {
-
-            return Ok(_IndentService.GetAllIndent());
+            return Ok(_IndentService.GetAllIndentByStatus(indentStatus));
         }
 
         [HttpGet("{id}")]

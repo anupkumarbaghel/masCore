@@ -26,9 +26,9 @@ namespace MAS.Application.Indent
             return _IndentService.DeleteIndent(ID);
         }
 
-        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndent()
+        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus)
         {
-            return _IndentService.GetAllIndent();
+            return _IndentService.GetAllIndentByStatus(indentStatus);
         }
 
         public Core.Domain.Indent.Indent GetIndent(int id)

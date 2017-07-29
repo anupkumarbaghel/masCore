@@ -34,23 +34,7 @@ namespace MAS.Web.Controllers
 
             return View();
         }
-        public IActionResult Indent()
-        {
-            IEnumerable<MAS.Core.Domain.Indent.Indent> indentList = _IndentService.GetAllIndent();
-
-            return View(indentList); 
-        }
-
-        public IActionResult Mas()
-        {
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-           
-
-            return View();
-        }
+      
+        
     }
 }

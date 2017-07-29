@@ -6,7 +6,7 @@ namespace MAS.Core.Interface.Repository.Indent
 {
     public interface IIendentRepositoryService
     {
-        IEnumerable<Domain.Indent.Indent> GetAllIndent();
+        IEnumerable<Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus);
         Domain.Indent.Indent GetIndent(int id);
         Domain.Indent.Indent GetOpenIndent();
         Domain.Indent.Indent CreateEditIndent(Domain.Indent.Indent indent);

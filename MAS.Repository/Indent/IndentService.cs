@@ -24,7 +24,6 @@ namespace MAS.Repository.Indent
             }
             else
             {
-                indent.IndentStatus = "o";
                 _context.Add(indent);
             }
            
@@ -42,9 +41,9 @@ namespace MAS.Repository.Indent
             return indent.ID;
         }
 
-        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndent()
+        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus)
         {
-            return _context.Indents.ToList();
+            return _context.Indents.Where(e=>e.IndentStatus==indentStatus).ToList();
         }
 
         public Core.Domain.Indent.Indent GetIndent(int id)
