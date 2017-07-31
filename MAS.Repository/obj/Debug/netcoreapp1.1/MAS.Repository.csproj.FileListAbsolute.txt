@@ -1,9 +1,9 @@
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Repository.deps.json
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Repository.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Repository.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Core.dll
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Core.pdb
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Debug\netcoreapp1.1\MAS.Repository.csprojResolveAssemblyReference.cache
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Debug\netcoreapp1.1\MAS.Repository.AssemblyInfo.cs
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Debug\netcoreapp1.1\MAS.Repository.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Debug\netcoreapp1.1\MAS.Repository.pdb
-C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Core.dll
-C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\bin\Debug\netcoreapp1.1\MAS.Core.pdb

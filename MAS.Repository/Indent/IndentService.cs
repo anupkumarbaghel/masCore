@@ -48,7 +48,7 @@ namespace MAS.Repository.Indent
 
         public Core.Domain.Indent.Indent GetIndent(int id)
         {
-            return _context.Indents.SingleOrDefault(e => e.ID == id);
+            return _context.Indents.Include(e => e.IndentTableCollection).FirstOrDefault(e => e.ID == id);
         }
 
         public Core.Domain.Indent.Indent GetOpenIndent()

@@ -6,6 +6,9 @@
 
   <PropertyGroup>
     <PackageTargetFallback>$(PackageTargetFallback);portable-net45+win8+wp8+wpa81;</PackageTargetFallback>
+    <SignAssembly>False</SignAssembly>
+    <Company>Exaprocess</Company>
+    <Authors>Anup</Authors>
   </PropertyGroup>
 
   <ItemGroup>
