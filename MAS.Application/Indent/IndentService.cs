@@ -20,6 +20,10 @@ namespace MAS.Application.Indent
         {
             return _IndentService.CreateEditIndent(indent);
         }
+        public void DraftOpenIndent(long id)
+        {
+           _IndentService.DraftOpenIndent(id);
+        }
 
         public long DeleteIndent(long ID)
         {
@@ -31,7 +35,7 @@ namespace MAS.Application.Indent
             return _IndentService.GetAllIndentByStatus(indentStatus);
         }
 
-        public Core.Domain.Indent.Indent GetIndent(int id)
+        public Core.Domain.Indent.Indent GetIndent(long id)
         {
             return _IndentService.GetIndent(id);
         }

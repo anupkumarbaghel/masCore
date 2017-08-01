@@ -30,6 +30,15 @@ namespace MAS.Repository.Indent
             _context.SaveChanges();
             return indent;
         }
+        public void DraftOpenIndent(long id)
+        {
+
+            _context.Database.ExecuteSqlCommand("SP_MakeDraftOpen @p0", id);
+            _context.SaveChanges();
+            //plese take referenence from below
+            //http://www.talkingdotnet.com/how-to-execute-stored-procedure-in-entity-framework-core/
+
+        }
 
         public long DeleteIndent(long ID)
         {
@@ -46,7 +55,7 @@ namespace MAS.Repository.Indent
             return _context.Indents.Where(e=>e.IndentStatus==indentStatus).ToList();
         }
 
-        public Core.Domain.Indent.Indent GetIndent(int id)
+        public Core.Domain.Indent.Indent GetIndent(long id)
         {
             return _context.Indents.Include(e => e.IndentTableCollection).FirstOrDefault(e => e.ID == id);
         }

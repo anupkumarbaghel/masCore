@@ -12,7 +12,7 @@ namespace MAS.Web
     {
         public static IServiceCollection RegisterDependencies( this IServiceCollection services)
         {
-            services.AddScoped<Core.Interface.Application.Indent.IIendentService, Application.Indent.IndentService>();
+            services.AddScoped<MAS.Core.Interface.Application.Indent.IIendentService,MAS.Application.Indent.IndentService>();
             services.AddScoped<Core.Interface.Repository.Indent.IIendentRepositoryService,Repository.Indent.IndentRepositoryService>();
            
            

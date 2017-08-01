@@ -16,7 +16,7 @@ namespace MAS.Web.ApiControllers
         private readonly IIendentService _IndentService;
         public IndentController(IIendentService indentService)
         {
-            _IndentService = indentService ;
+            _IndentService = indentService;
         }
 
         [HttpGet]
@@ -26,7 +26,7 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetIndent([FromRoute] int id)
+        public IActionResult GetIndent([FromRoute] long id)
         {
             if (!ModelState.IsValid)
             {
@@ -42,7 +42,7 @@ namespace MAS.Web.ApiControllers
 
             return Ok(indent);
         }
-        
+
         [HttpGet("openindent")]
         public IActionResult GetOpenIndent()
         {
@@ -71,12 +71,22 @@ namespace MAS.Web.ApiControllers
             return Ok(_IndentService.CreateEditIndent(indent));
         }
 
-       
+        [HttpPost("draftopen")]
+        public IActionResult PostDraftOpen([FromBody] long id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            _IndentService.DraftOpenIndent(id);
+
+            return Ok();
+        }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteIndent([FromRoute] long id)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid)  
             {
                 return BadRequest(ModelState);
             }
