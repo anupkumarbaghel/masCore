@@ -8,8 +8,8 @@ using MAS.Repository;
 namespace MAS.Repository.Migrations
 {
     [DbContext(typeof(MASDBContext))]
-    [Migration("20170726150951_addIndentStatusColumn")]
-    partial class addIndentStatusColumn
+    [Migration("20170802182446_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,8 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("IndentStatus")
                         .HasMaxLength(10);
+
+                    b.Property<bool>("IsDelete");
 
                     b.Property<string>("IssuedBy")
                         .HasMaxLength(200);
@@ -60,7 +62,8 @@ namespace MAS.Repository.Migrations
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ContractorName");
+                    b.Property<string>("ContractorName")
+                        .HasMaxLength(200);
 
                     b.Property<string>("CreatedBy");
 
@@ -68,9 +71,12 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("Description");
 
-                    b.Property<string>("HeadOfAccount");
+                    b.Property<string>("HeadOfAccount")
+                        .HasMaxLength(200);
 
                     b.Property<long>("IndentID");
+
+                    b.Property<bool>("IsDelete");
 
                     b.Property<string>("ModifiedBy");
 
@@ -78,7 +84,8 @@ namespace MAS.Repository.Migrations
 
                     b.Property<decimal>("Quantity");
 
-                    b.Property<string>("SerialNo");
+                    b.Property<string>("SerialNo")
+                        .HasMaxLength(200);
 
                     b.HasKey("ID");
 
@@ -92,32 +99,42 @@ namespace MAS.Repository.Migrations
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("AggrementNumber");
+                    b.Property<string>("AggrementNumber")
+                        .HasMaxLength(200);
 
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<string>("MBNumber");
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MBNumber")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("MeasurementBookStatus")
+                        .HasMaxLength(10);
 
                     b.Property<string>("ModifiedBy");
 
                     b.Property<DateTime>("ModifiedDate");
 
-                    b.Property<string>("NameOfContractor");
+                    b.Property<string>("NameOfContractor")
+                        .HasMaxLength(200);
 
-                    b.Property<string>("PageNumber");
+                    b.Property<string>("PageNumber")
+                        .HasMaxLength(10);
 
-                    b.Property<string>("WorkOrderNumber");
+                    b.Property<string>("WorkOrderNumber")
+                        .HasMaxLength(200);
 
                     b.HasKey("ID");
 
-                    b.ToTable("MeasurementBooks");
+                    b.ToTable("MeasurementBook");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.MeasurementBook.MeasurementBookTable", b =>
                 {
-                    b.Property<long>("MeasurementBookTableID")
+                    b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("CreatedBy");
@@ -128,7 +145,9 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("HeadOfAccount");
 
-                    b.Property<long>("ID");
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<long>("MeasurementBookID");
 
                     b.Property<string>("ModifiedBy");
 
@@ -138,11 +157,11 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("SerialNumber");
 
-                    b.HasKey("MeasurementBookTableID");
+                    b.HasKey("ID");
 
-                    b.HasIndex("ID");
+                    b.HasIndex("MeasurementBookID");
 
-                    b.ToTable("MeasurementBookTables");
+                    b.ToTable("MeasurementBookTable");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Indent.IndentTable", b =>
@@ -157,7 +176,7 @@ namespace MAS.Repository.Migrations
                 {
                     b.HasOne("MAS.Core.Domain.MeasurementBook.MeasurementBook")
                         .WithMany("MBTable")
-                        .HasForeignKey("ID")
+                        .HasForeignKey("MeasurementBookID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
         }

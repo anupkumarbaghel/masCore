@@ -14,8 +14,11 @@ namespace MAS.Web
         {
             services.AddScoped<MAS.Core.Interface.Application.Indent.IIendentService,MAS.Application.Indent.IndentService>();
             services.AddScoped<Core.Interface.Repository.Indent.IIendentRepositoryService,Repository.Indent.IndentRepositoryService>();
-           
-           
+
+            services.AddScoped<MAS.Core.Interface.Application.MeasurementBook.IMeasurementBookApplicationService, MAS.Application.MeasurementBook.MeasurementBookApplicationService>();
+            services.AddScoped<Core.Interface.Repository.MeasurementBook.IMeasurementBookRepositoryService, Repository.MeasurementBook.MeasurementBookRepositoryService>();
+
+
 
             return services;
         }

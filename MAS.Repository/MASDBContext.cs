@@ -16,8 +16,8 @@ namespace MAS.Repository
 
         public DbSet<MAS.Core.Domain.Indent.Indent> Indents { get; set; }
         public DbSet<MAS.Core.Domain.Indent.IndentTable> IndentTables { get; set; }
-        public DbSet<MeasurementBook> MeasurementBooks { get; set; }
-        public DbSet<MeasurementBookTable> MeasurementBookTables { get; set; }
+        public DbSet<MAS.Core.Domain.MeasurementBook.MeasurementBook> MeasurementBooks { get; set; }
+        public DbSet<MAS.Core.Domain.MeasurementBook.MeasurementBook> MeasurementBookTables { get; set; }
 
 
     }

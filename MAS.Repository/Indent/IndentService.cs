@@ -33,7 +33,7 @@ namespace MAS.Repository.Indent
         public void DraftOpenIndent(long id)
         {
 
-            _context.Database.ExecuteSqlCommand("SP_MakeDraftOpen @p0", id);
+            _context.Database.ExecuteSqlCommand("usp_MakeDraftOpenIndent @p0", id);
             _context.SaveChanges();
             //plese take referenence from below
             //http://www.talkingdotnet.com/how-to-execute-stored-procedure-in-entity-framework-core/

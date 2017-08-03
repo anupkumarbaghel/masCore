@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace MAS.Repository.Migrations
 {
-    public partial class initialmigration : Migration
+    public partial class initialMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,13 +18,15 @@ namespace MAS.Repository.Migrations
                     CreatedBy = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     IndentDate = table.Column<DateTime>(nullable: true),
-                    IndentNumber = table.Column<string>(nullable: true),
-                    IssuedBy = table.Column<string>(nullable: true),
+                    IndentNumber = table.Column<string>(maxLength: 200, nullable: true),
+                    IndentStatus = table.Column<string>(maxLength: 10, nullable: true),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    IssuedBy = table.Column<string>(maxLength: 200, nullable: true),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
-                    ProvidedBy = table.Column<string>(nullable: true),
-                    ProvidedOn = table.Column<string>(nullable: true),
-                    ProvidedTo = table.Column<string>(nullable: true)
+                    ProvidedBy = table.Column<string>(maxLength: 200, nullable: true),
+                    ProvidedOn = table.Column<string>(maxLength: 200, nullable: true),
+                    ProvidedTo = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -32,24 +34,26 @@ namespace MAS.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeasurementBooks",
+                name: "MeasurementBook",
                 columns: table => new
                 {
                     ID = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    AggrementNumber = table.Column<string>(nullable: true),
+                    AggrementNumber = table.Column<string>(maxLength: 200, nullable: true),
                     CreatedBy = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
-                    MBNumber = table.Column<string>(nullable: true),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    MBNumber = table.Column<string>(maxLength: 200, nullable: true),
+                    MeasurementBookStatus = table.Column<string>(maxLength: 10, nullable: true),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
-                    NameOfContractor = table.Column<string>(nullable: true),
-                    PageNumber = table.Column<string>(nullable: true),
-                    WorkOrderNumber = table.Column<string>(nullable: true)
+                    NameOfContractor = table.Column<string>(maxLength: 200, nullable: true),
+                    PageNumber = table.Column<string>(maxLength: 10, nullable: true),
+                    WorkOrderNumber = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeasurementBooks", x => x.ID);
+                    table.PrimaryKey("PK_MeasurementBook", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -58,16 +62,17 @@ namespace MAS.Repository.Migrations
                 {
                     ID = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    ContractorName = table.Column<string>(nullable: true),
+                    ContractorName = table.Column<string>(maxLength: 200, nullable: true),
                     CreatedBy = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
-                    HeadOfAccount = table.Column<string>(nullable: true),
+                    HeadOfAccount = table.Column<string>(maxLength: 200, nullable: true),
                     IndentID = table.Column<long>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     Quantity = table.Column<decimal>(nullable: false),
-                    SerialNo = table.Column<string>(nullable: true)
+                    SerialNo = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -81,16 +86,17 @@ namespace MAS.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeasurementBookTables",
+                name: "MeasurementBookTable",
                 columns: table => new
                 {
-                    MeasurementBookTableID = table.Column<long>(nullable: false)
+                    ID = table.Column<long>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     CreatedBy = table.Column<string>(nullable: true),
                     CreatedDate = table.Column<DateTime>(nullable: false),
                     Description = table.Column<string>(nullable: true),
                     HeadOfAccount = table.Column<string>(nullable: true),
-                    ID = table.Column<long>(nullable: false),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    MeasurementBookID = table.Column<long>(nullable: false),
                     ModifiedBy = table.Column<string>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     Quantity = table.Column<decimal>(nullable: false),
@@ -98,11 +104,11 @@ namespace MAS.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeasurementBookTables", x => x.MeasurementBookTableID);
+                    table.PrimaryKey("PK_MeasurementBookTable", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_MeasurementBookTables_MeasurementBooks_ID",
-                        column: x => x.ID,
-                        principalTable: "MeasurementBooks",
+                        name: "FK_MeasurementBookTable_MeasurementBook_MeasurementBookID",
+                        column: x => x.MeasurementBookID,
+                        principalTable: "MeasurementBook",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -113,9 +119,9 @@ namespace MAS.Repository.Migrations
                 column: "IndentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MeasurementBookTables_ID",
-                table: "MeasurementBookTables",
-                column: "ID");
+                name: "IX_MeasurementBookTable_MeasurementBookID",
+                table: "MeasurementBookTable",
+                column: "MeasurementBookID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -124,13 +130,13 @@ namespace MAS.Repository.Migrations
                 name: "IndentTables");
 
             migrationBuilder.DropTable(
-                name: "MeasurementBookTables");
+                name: "MeasurementBookTable");
 
             migrationBuilder.DropTable(
                 name: "Indents");
 
             migrationBuilder.DropTable(
-                name: "MeasurementBooks");
+                name: "MeasurementBook");
         }
     }
 }
