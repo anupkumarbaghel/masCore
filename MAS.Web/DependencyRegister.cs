@@ -12,11 +12,17 @@ namespace MAS.Web
     {
         public static IServiceCollection RegisterDependencies( this IServiceCollection services)
         {
-            services.AddScoped<MAS.Core.Interface.Application.Indent.IIendentService,MAS.Application.Indent.IndentService>();
+            services.AddScoped<MAS.Core.Interface.Application.Indent.IIendentService,MAS.Application.Indent.LockService>();
             services.AddScoped<Core.Interface.Repository.Indent.IIendentRepositoryService,Repository.Indent.IndentRepositoryService>();
 
             services.AddScoped<MAS.Core.Interface.Application.MeasurementBook.IMeasurementBookApplicationService, MAS.Application.MeasurementBook.MeasurementBookApplicationService>();
             services.AddScoped<Core.Interface.Repository.MeasurementBook.IMeasurementBookRepositoryService, Repository.MeasurementBook.MeasurementBookRepositoryService>();
+
+            services.AddScoped<MAS.Core.Interface.Application.Lock.ILockApplicationService, MAS.Application.Lock.LockApplicationService>();
+            services.AddScoped<Core.Interface.Repository.Lock.ILockRepositoryService, Repository.Lock.LockRepositoryService>();
+
+            services.AddScoped<MAS.Core.Interface.Application.Admin.IAdminApplicationService, MAS.Application.Admin.AdminApplicationService>();
+            services.AddScoped<Core.Interface.Repository.Admin.IAdminRepositoryService, Repository.Admin.AdminRepositoryService>();
 
 
 

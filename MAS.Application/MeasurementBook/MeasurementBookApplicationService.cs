@@ -25,14 +25,14 @@ namespace MAS.Application.MeasurementBook
             return _MeasurementBookService.DeleteMeasurementBook(ID);
         }
 
-        public void DraftOpenMeasurementBook(long id)
+        public void DraftOpenMeasurementBook(Core.Domain.MeasurementBook.MeasurementBook measurementBook)
         {
-            _MeasurementBookService.DraftOpenMeasurementBook(id);
+            _MeasurementBookService.DraftOpenMeasurementBook(measurementBook);
         }
 
-        public IEnumerable<Core.Domain.MeasurementBook.MeasurementBook> GetAllMeasurementBookByStatus(string measurementBookStatus)
+        public IEnumerable<Core.Domain.MeasurementBook.MeasurementBook> GetAllMeasurementBookByStatus(string measurementBookStatus,int storeID)
         {
-            return _MeasurementBookService.GetAllMeasurementBookByStatus(measurementBookStatus);
+            return _MeasurementBookService.GetAllMeasurementBookByStatus(measurementBookStatus,storeID);
         }
 
         public Core.Domain.MeasurementBook.MeasurementBook GetMeasurementBook(long id)
@@ -40,9 +40,9 @@ namespace MAS.Application.MeasurementBook
             return _MeasurementBookService.GetMeasurementBook(id);
         }
 
-        public Core.Domain.MeasurementBook.MeasurementBook GetOpenMeasurementBook()
+        public Core.Domain.MeasurementBook.MeasurementBook GetOpenMeasurementBook(int storeID)
         {
-            return _MeasurementBookService.GetOpenMeasurementBook();
+            return _MeasurementBookService.GetOpenMeasurementBook(storeID);
         }
     }
 }

@@ -8,10 +8,10 @@ using MAS.Core.Interface.Repository.Indent;
 
 namespace MAS.Application.Indent
 {
-    public class IndentService :MAS.Core.Interface.Application.Indent.IIendentService
+    public class LockService :MAS.Core.Interface.Application.Indent.IIendentService
     {
         IIendentRepositoryService _IndentService;
-        public IndentService(IIendentRepositoryService indentService)
+        public LockService(IIendentRepositoryService indentService)
         {
             _IndentService = indentService;
         }
@@ -20,9 +20,9 @@ namespace MAS.Application.Indent
         {
             return _IndentService.CreateEditIndent(indent);
         }
-        public void DraftOpenIndent(long id)
+        public void DraftOpenIndent(Core.Domain.Indent.Indent indent)
         {
-           _IndentService.DraftOpenIndent(id);
+           _IndentService.DraftOpenIndent(indent);
         }
 
         public long DeleteIndent(long ID)
@@ -30,9 +30,9 @@ namespace MAS.Application.Indent
             return _IndentService.DeleteIndent(ID);
         }
 
-        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus)
+        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
         {
-            return _IndentService.GetAllIndentByStatus(indentStatus);
+            return _IndentService.GetAllIndentByStatus(indentStatus,storeID);
         }
 
         public Core.Domain.Indent.Indent GetIndent(long id)
@@ -40,9 +40,9 @@ namespace MAS.Application.Indent
             return _IndentService.GetIndent(id);
         }
 
-        public Core.Domain.Indent.Indent GetOpenIndent()
+        public Core.Domain.Indent.Indent GetOpenIndent(int storeID)
         {
-            return _IndentService.GetOpenIndent();
+            return _IndentService.GetOpenIndent(storeID);
         }
 
         

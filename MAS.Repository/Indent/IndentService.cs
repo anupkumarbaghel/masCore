@@ -30,10 +30,10 @@ namespace MAS.Repository.Indent
             _context.SaveChanges();
             return indent;
         }
-        public void DraftOpenIndent(long id)
+        public void DraftOpenIndent(Core.Domain.Indent.Indent indent)
         {
 
-            _context.Database.ExecuteSqlCommand("usp_MakeDraftOpenIndent @p0", id);
+            _context.Database.ExecuteSqlCommand("[dbo].[usp_MakeDraftOpenIndent] @p0,@p1", indent.ID,indent.StoreID);
             _context.SaveChanges();
             //plese take referenence from below
             //http://www.talkingdotnet.com/how-to-execute-stored-procedure-in-entity-framework-core/
@@ -50,9 +50,9 @@ namespace MAS.Repository.Indent
             return indent.ID;
         }
 
-        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus)
+        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
         {
-            return _context.Indents.Where(e=>e.IndentStatus==indentStatus).ToList();
+            return _context.Indents.Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID).ToList();
         }
 
         public Core.Domain.Indent.Indent GetIndent(long id)
@@ -60,9 +60,9 @@ namespace MAS.Repository.Indent
             return _context.Indents.Include(e => e.IndentTableCollection).FirstOrDefault(e => e.ID == id);
         }
 
-        public Core.Domain.Indent.Indent GetOpenIndent()
+        public Core.Domain.Indent.Indent GetOpenIndent(int storeID)
         {
-            return _context.Indents.Include(e=>e.IndentTableCollection).SingleOrDefault(e => e.IndentStatus == "o");
+            return _context.Indents.Include(e=>e.IndentTableCollection).SingleOrDefault(e => e.IndentStatus == "o" && e.StoreID==storeID);
         }
 
        

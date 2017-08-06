@@ -19,9 +19,10 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet]
-        public IActionResult GetAllMeasurementBookByStatus(string measurementBookStatus)
+        public IActionResult GetAllMeasurementBookByStatus(string measurementBookStatus,string storeID)
         {
-            return Ok(_MeasuremeantBookService.GetAllMeasurementBookByStatus(measurementBookStatus));
+            int stID = int.Parse(storeID);
+            return Ok(_MeasuremeantBookService.GetAllMeasurementBookByStatus(measurementBookStatus, stID));
         }
 
         [HttpGet("{id}")]
@@ -43,14 +44,14 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet("openmeasurementbook")]
-        public IActionResult GetOpenMeasurementBook()
+        public IActionResult GetOpenMeasurementBook(string storeID)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            var indent = _MeasuremeantBookService.GetOpenMeasurementBook();
+            int stID = int.Parse(storeID);
+            var indent = _MeasuremeantBookService.GetOpenMeasurementBook(stID);
 
             if (indent == null)
             {
@@ -71,13 +72,13 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpPost("draftopen")]
-        public IActionResult PostDraftOpenMeasurementBook([FromBody] long id)
+        public IActionResult PostDraftOpenMeasurementBook([FromBody]  MeasurementBook measurementBook)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            _MeasuremeantBookService.DraftOpenMeasurementBook(id);
+            _MeasuremeantBookService.DraftOpenMeasurementBook(measurementBook);
 
             return Ok();
         }

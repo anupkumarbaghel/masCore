@@ -24,5 +24,7 @@ namespace MAS.Core.Domain.Indent
         public virtual ICollection<IndentTable> IndentTableCollection { get; set; }
         [StringLength(10)]
         public virtual string IndentStatus { get; set; }
+
+        public virtual int StoreID { get; set; }
     }
 }

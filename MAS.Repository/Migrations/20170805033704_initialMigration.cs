@@ -10,6 +10,53 @@ namespace MAS.Repository.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Admins",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    Key = table.Column<string>(maxLength: 1000, nullable: true),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Admins", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Stores",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    AdminID = table.Column<int>(nullable: false),
+                    CreatedBy = table.Column<string>(nullable: true),
+                    CreatedDate = table.Column<DateTime>(nullable: false),
+                    Description = table.Column<string>(nullable: true),
+                    IsDelete = table.Column<bool>(nullable: false),
+                    Key = table.Column<string>(maxLength: 1000, nullable: true),
+                    ModifiedBy = table.Column<string>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: false),
+                    Name = table.Column<string>(maxLength: 200, nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Stores", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Stores_Admins_AdminID",
+                        column: x => x.AdminID,
+                        principalTable: "Admins",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Indents",
                 columns: table => new
                 {
@@ -26,15 +73,22 @@ namespace MAS.Repository.Migrations
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     ProvidedBy = table.Column<string>(maxLength: 200, nullable: true),
                     ProvidedOn = table.Column<string>(maxLength: 200, nullable: true),
-                    ProvidedTo = table.Column<string>(maxLength: 200, nullable: true)
+                    ProvidedTo = table.Column<string>(maxLength: 200, nullable: true),
+                    StoreID = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Indents", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Indents_Stores_StoreID",
+                        column: x => x.StoreID,
+                        principalTable: "Stores",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeasurementBook",
+                name: "MeasurementBooks",
                 columns: table => new
                 {
                     ID = table.Column<long>(nullable: false)
@@ -49,11 +103,18 @@ namespace MAS.Repository.Migrations
                     ModifiedDate = table.Column<DateTime>(nullable: false),
                     NameOfContractor = table.Column<string>(maxLength: 200, nullable: true),
                     PageNumber = table.Column<string>(maxLength: 10, nullable: true),
+                    StoreID = table.Column<int>(nullable: false),
                     WorkOrderNumber = table.Column<string>(maxLength: 200, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeasurementBook", x => x.ID);
+                    table.PrimaryKey("PK_MeasurementBooks", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_MeasurementBooks_Stores_StoreID",
+                        column: x => x.StoreID,
+                        principalTable: "Stores",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,7 +147,7 @@ namespace MAS.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MeasurementBookTable",
+                name: "MeasurementBookTables",
                 columns: table => new
                 {
                     ID = table.Column<long>(nullable: false)
@@ -104,14 +165,19 @@ namespace MAS.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MeasurementBookTable", x => x.ID);
+                    table.PrimaryKey("PK_MeasurementBookTables", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_MeasurementBookTable_MeasurementBook_MeasurementBookID",
+                        name: "FK_MeasurementBookTables_MeasurementBooks_MeasurementBookID",
                         column: x => x.MeasurementBookID,
-                        principalTable: "MeasurementBook",
+                        principalTable: "MeasurementBooks",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Indents_StoreID",
+                table: "Indents",
+                column: "StoreID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_IndentTables_IndentID",
@@ -119,9 +185,19 @@ namespace MAS.Repository.Migrations
                 column: "IndentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MeasurementBookTable_MeasurementBookID",
-                table: "MeasurementBookTable",
+                name: "IX_MeasurementBooks_StoreID",
+                table: "MeasurementBooks",
+                column: "StoreID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MeasurementBookTables_MeasurementBookID",
+                table: "MeasurementBookTables",
                 column: "MeasurementBookID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Stores_AdminID",
+                table: "Stores",
+                column: "AdminID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -130,13 +206,19 @@ namespace MAS.Repository.Migrations
                 name: "IndentTables");
 
             migrationBuilder.DropTable(
-                name: "MeasurementBookTable");
+                name: "MeasurementBookTables");
 
             migrationBuilder.DropTable(
                 name: "Indents");
 
             migrationBuilder.DropTable(
-                name: "MeasurementBook");
+                name: "MeasurementBooks");
+
+            migrationBuilder.DropTable(
+                name: "Stores");
+
+            migrationBuilder.DropTable(
+                name: "Admins");
         }
     }
 }

@@ -28,10 +28,10 @@ namespace MAS.Repository.MeasurementBook
             _context.SaveChanges();
             return measurementBook;
         }
-        public void DraftOpenMeasurementBook(long id)
+        public void DraftOpenMeasurementBook(Core.Domain.MeasurementBook.MeasurementBook measurementBook)
         {
 
-            _context.Database.ExecuteSqlCommand("usp_MakeDraftOpenMeasurementBook @p0", id);
+            _context.Database.ExecuteSqlCommand("[dbo].[usp_MakeDraftOpenMeasurementBook] @p0,@p1", measurementBook.ID,measurementBook.StoreID);
             _context.SaveChanges();
             //plese take referenence from below
             //http://www.talkingdotnet.com/how-to-execute-stored-procedure-in-entity-framework-core/
@@ -48,9 +48,10 @@ namespace MAS.Repository.MeasurementBook
             return measurementBook.ID;
         }
 
-        public IEnumerable<Core.Domain.MeasurementBook.MeasurementBook> GetAllMeasurementBookByStatus(string measurementBookStatus)
+        public IEnumerable<Core.Domain.MeasurementBook.MeasurementBook> GetAllMeasurementBookByStatus(string measurementBookStatus,int storeID)
         {
-            return _context.MeasurementBooks.Where(e => e.MeasurementBookStatus == measurementBookStatus).ToList();
+            return _context.MeasurementBooks.Where(e => e.MeasurementBookStatus == measurementBookStatus 
+            && e.StoreID==storeID ).ToList();
         }
 
         public Core.Domain.MeasurementBook.MeasurementBook GetMeasurementBook(long id)
@@ -58,9 +59,9 @@ namespace MAS.Repository.MeasurementBook
             return _context.MeasurementBooks.Include(e => e.MBTable).FirstOrDefault(e => e.ID == id);
         }
 
-        public Core.Domain.MeasurementBook.MeasurementBook GetOpenMeasurementBook()
+        public Core.Domain.MeasurementBook.MeasurementBook GetOpenMeasurementBook(int storeID)
         {
-            return _context.MeasurementBooks.Include(e => e.MBTable).SingleOrDefault(e => e.MeasurementBookStatus == "o");
+            return _context.MeasurementBooks.Include(e => e.MBTable).SingleOrDefault(e => e.MeasurementBookStatus == "o" && e.StoreID== storeID);
         }
 
      

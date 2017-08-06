@@ -6,11 +6,12 @@ namespace MAS.Core.Interface.Repository.MeasurementBook
 {
     public interface IMeasurementBookRepositoryService
     {
-        IEnumerable<Domain.MeasurementBook.MeasurementBook> GetAllMeasurementBookByStatus(string measurementBookStatus);
+        IEnumerable<Domain.MeasurementBook.MeasurementBook> 
+            GetAllMeasurementBookByStatus(string measurementBookStatus,int storeID);
         Domain.MeasurementBook.MeasurementBook GetMeasurementBook(long id);
-        Domain.MeasurementBook.MeasurementBook GetOpenMeasurementBook();
+        Domain.MeasurementBook.MeasurementBook GetOpenMeasurementBook(int storeID);
         Domain.MeasurementBook.MeasurementBook CreateEditMeasurementBook(Domain.MeasurementBook.MeasurementBook measurementBook);
-        void DraftOpenMeasurementBook(long id);
+        void DraftOpenMeasurementBook(Domain.MeasurementBook.MeasurementBook measurementBook);
         long DeleteMeasurementBook(long ID);
     }
 }

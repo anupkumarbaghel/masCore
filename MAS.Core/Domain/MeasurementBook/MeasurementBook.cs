@@ -21,5 +21,7 @@ namespace MAS.Core.Domain.MeasurementBook
         public virtual ICollection<MeasurementBookTable> MBTable { get; set; }
         [StringLength(10)]
         public virtual string MeasurementBookStatus { get; set; }
+
+        public virtual int StoreID { get; set; }
     }
 }
