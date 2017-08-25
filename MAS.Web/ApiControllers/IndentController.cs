@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+using MAS.Core.Domain.Store.Indent;
 using MAS.Core.Interface.Application.Indent;
-using MAS.Core.Domain.Indent;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MAS.Web.ApiControllers
 {

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using MAS.Core.Domain.Admin;
-using MAS.Core.Domain.Indent;
-using MAS.Core.Interface.Repository.Lock;
+﻿using MAS.Core.Interface.Repository.Lock;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace MAS.Repository.Lock
 {

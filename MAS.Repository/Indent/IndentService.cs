@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MAS.Core.Domain.Indent;
+using MAS.Core.Domain.Store.Indent;
 using Microsoft.EntityFrameworkCore;
 
 namespace MAS.Repository.Indent
@@ -16,7 +16,7 @@ namespace MAS.Repository.Indent
             _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
-        public Core.Domain.Indent.Indent CreateEditIndent(Core.Domain.Indent.Indent indent)
+        public Core.Domain.Store.Indent.Indent CreateEditIndent(Core.Domain.Store.Indent.Indent indent)
         {
             if (indent.ID > 0)
             {
@@ -26,11 +26,23 @@ namespace MAS.Repository.Indent
             {
                 _context.Add(indent);
             }
-           
+            foreach (var indentTable in indent.IndentTableCollection)
+            {
+                if (indentTable.IsDelete)
+                {
+                    indent.IndentTableCollection.Remove(indentTable);
+                }
+            }
+                foreach (var indentTable in indent.IndentTableCollection)
+            {
+                
+                MAS.Core.Domain.Store.MasterRegister.MasterRegister masterregister = indentTable.MasterRegister;
+                _context.Entry(masterregister).State = EntityState.Unchanged;
+            }
             _context.SaveChanges();
             return indent;
         }
-        public void DraftOpenIndent(Core.Domain.Indent.Indent indent)
+        public void DraftOpenIndent(Core.Domain.Store.Indent.Indent indent)
         {
 
             _context.Database.ExecuteSqlCommand("[dbo].[usp_MakeDraftOpenIndent] @p0,@p1", indent.ID,indent.StoreID);
@@ -42,7 +54,7 @@ namespace MAS.Repository.Indent
 
         public long DeleteIndent(long ID)
         {
-            Core.Domain.Indent.Indent indent = _context.Indents.SingleOrDefault(e => e.ID == ID);
+            Core.Domain.Store.Indent.Indent indent = _context.Indents.SingleOrDefault(e => e.ID == ID);
             if (indent == null) return -1;
 
             _context.Indents.Remove(indent);
@@ -50,19 +62,23 @@ namespace MAS.Repository.Indent
             return indent.ID;
         }
 
-        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
+        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
         {
             return _context.Indents.Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID).ToList();
         }
 
-        public Core.Domain.Indent.Indent GetIndent(long id)
+        public Core.Domain.Store.Indent.Indent GetIndent(long id)
         {
-            return _context.Indents.Include(e => e.IndentTableCollection).FirstOrDefault(e => e.ID == id);
+            return _context.Indents.Include(e => e.IndentTableCollection)
+                .ThenInclude(f => f.MasterRegister)
+                .FirstOrDefault(e => e.ID == id);
         }
 
-        public Core.Domain.Indent.Indent GetOpenIndent(int storeID)
+        public Core.Domain.Store.Indent.Indent GetOpenIndent(int storeID)
         {
-            return _context.Indents.Include(e=>e.IndentTableCollection).SingleOrDefault(e => e.IndentStatus == "o" && e.StoreID==storeID);
+            return _context.Indents.Include(e=>e.IndentTableCollection)
+                .ThenInclude(f=>f.MasterRegister)
+                .FirstOrDefault(e => e.IndentStatus == "o" && e.StoreID==storeID);
         }
 
        

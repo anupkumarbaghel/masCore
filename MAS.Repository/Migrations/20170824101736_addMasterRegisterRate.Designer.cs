@@ -8,8 +8,8 @@ using MAS.Repository;
 namespace MAS.Repository.Migrations
 {
     [DbContext(typeof(MASDBContext))]
-    [Migration("20170805033704_initialMigration")]
-    partial class initialMigration
+    [Migration("20170824101736_addMasterRegisterRate")]
+    partial class addMasterRegisterRate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,6 +28,8 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("Key")
@@ -40,12 +42,14 @@ namespace MAS.Repository.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(200);
 
+                    b.Property<decimal>("Sequence");
+
                     b.HasKey("ID");
 
                     b.ToTable("Admins");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.Indent.Indent", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.Indent.Indent", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
@@ -62,7 +66,11 @@ namespace MAS.Repository.Migrations
                     b.Property<string>("IndentStatus")
                         .HasMaxLength(10);
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("IsDelete");
+
+                    b.Property<bool>("IsReceive");
 
                     b.Property<string>("IssuedBy")
                         .HasMaxLength(200);
@@ -80,7 +88,11 @@ namespace MAS.Repository.Migrations
                     b.Property<string>("ProvidedTo")
                         .HasMaxLength(200);
 
+                    b.Property<decimal>("Sequence");
+
                     b.Property<int>("StoreID");
+
+                    b.Property<DateTime?>("SubmittedDate");
 
                     b.HasKey("ID");
 
@@ -89,7 +101,7 @@ namespace MAS.Repository.Migrations
                     b.ToTable("Indents");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.Indent.IndentTable", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.Indent.IndentTable", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
@@ -108,13 +120,19 @@ namespace MAS.Repository.Migrations
 
                     b.Property<long>("IndentID");
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("IsDelete");
+
+                    b.Property<int?>("MasterRegisterID");
 
                     b.Property<string>("ModifiedBy");
 
                     b.Property<DateTime>("ModifiedDate");
 
                     b.Property<decimal>("Quantity");
+
+                    b.Property<decimal>("Sequence");
 
                     b.Property<string>("SerialNo")
                         .HasMaxLength(200);
@@ -123,10 +141,47 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("IndentID");
 
+                    b.HasIndex("MasterRegisterID");
+
                     b.ToTable("IndentTables");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.MeasurementBook.MeasurementBook", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.MasterRegister.MasterRegister", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedBy");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<bool>("IsDelete");
+
+                    b.Property<string>("MaterialNameWithDescription");
+
+                    b.Property<decimal>("MaterialRate");
+
+                    b.Property<string>("MaterialUnit")
+                        .HasMaxLength(20);
+
+                    b.Property<string>("ModifiedBy");
+
+                    b.Property<DateTime>("ModifiedDate");
+
+                    b.Property<decimal>("Sequence");
+
+                    b.Property<int>("SerialNumber");
+
+                    b.Property<int>("StoreID");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("MasterRegisters");
+                });
+
+            modelBuilder.Entity("MAS.Core.Domain.Store.MeasurementBook.MeasurementBook", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
@@ -138,6 +193,8 @@ namespace MAS.Repository.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("MBNumber")
@@ -145,6 +202,8 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("MeasurementBookStatus")
                         .HasMaxLength(10);
+
+                    b.Property<DateTime?>("MeasurementDate");
 
                     b.Property<string>("ModifiedBy");
 
@@ -156,7 +215,11 @@ namespace MAS.Repository.Migrations
                     b.Property<string>("PageNumber")
                         .HasMaxLength(10);
 
+                    b.Property<decimal>("Sequence");
+
                     b.Property<int>("StoreID");
+
+                    b.Property<int?>("StoreID2");
 
                     b.Property<string>("WorkOrderNumber")
                         .HasMaxLength(200);
@@ -165,10 +228,12 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("StoreID");
 
+                    b.HasIndex("StoreID2");
+
                     b.ToTable("MeasurementBooks");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.MeasurementBook.MeasurementBookTable", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.MeasurementBook.MeasurementBookTable", b =>
                 {
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
@@ -181,7 +246,11 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("HeadOfAccount");
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("IsDelete");
+
+                    b.Property<int?>("MasterRegisterID");
 
                     b.Property<long>("MeasurementBookID");
 
@@ -191,9 +260,13 @@ namespace MAS.Repository.Migrations
 
                     b.Property<decimal>("Quantity");
 
+                    b.Property<decimal>("Sequence");
+
                     b.Property<string>("SerialNumber");
 
                     b.HasKey("ID");
+
+                    b.HasIndex("MasterRegisterID");
 
                     b.HasIndex("MeasurementBookID");
 
@@ -213,6 +286,8 @@ namespace MAS.Repository.Migrations
 
                     b.Property<string>("Description");
 
+                    b.Property<bool>("IsActive");
+
                     b.Property<bool>("IsDelete");
 
                     b.Property<string>("Key")
@@ -225,6 +300,8 @@ namespace MAS.Repository.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(200);
 
+                    b.Property<decimal>("Sequence");
+
                     b.HasKey("ID");
 
                     b.HasIndex("AdminID");
@@ -232,7 +309,7 @@ namespace MAS.Repository.Migrations
                     b.ToTable("Stores");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.Indent.Indent", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.Indent.Indent", b =>
                 {
                     b.HasOne("MAS.Core.Domain.Store.Store")
                         .WithMany("IndentCollection")
@@ -240,25 +317,37 @@ namespace MAS.Repository.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.Indent.IndentTable", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.Indent.IndentTable", b =>
                 {
-                    b.HasOne("MAS.Core.Domain.Indent.Indent")
+                    b.HasOne("MAS.Core.Domain.Store.Indent.Indent")
                         .WithMany("IndentTableCollection")
                         .HasForeignKey("IndentID")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MAS.Core.Domain.Store.MasterRegister.MasterRegister", "MasterRegister")
+                        .WithMany()
+                        .HasForeignKey("MasterRegisterID");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.MeasurementBook.MeasurementBook", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.MeasurementBook.MeasurementBook", b =>
                 {
                     b.HasOne("MAS.Core.Domain.Store.Store")
-                        .WithMany("MeasurementBookCollection")
+                        .WithMany("MasterRegisterCollection")
                         .HasForeignKey("StoreID")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("MAS.Core.Domain.Store.Store")
+                        .WithMany("MeasurementBookCollection")
+                        .HasForeignKey("StoreID2");
                 });
 
-            modelBuilder.Entity("MAS.Core.Domain.MeasurementBook.MeasurementBookTable", b =>
+            modelBuilder.Entity("MAS.Core.Domain.Store.MeasurementBook.MeasurementBookTable", b =>
                 {
-                    b.HasOne("MAS.Core.Domain.MeasurementBook.MeasurementBook")
+                    b.HasOne("MAS.Core.Domain.Store.MasterRegister.MasterRegister", "MasterRegister")
+                        .WithMany()
+                        .HasForeignKey("MasterRegisterID");
+
+                    b.HasOne("MAS.Core.Domain.Store.MeasurementBook.MeasurementBook")
                         .WithMany("MBTable")
                         .HasForeignKey("MeasurementBookID")
                         .OnDelete(DeleteBehavior.Cascade);

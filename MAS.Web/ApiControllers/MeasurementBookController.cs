@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MAS.Core.Interface.Application.MeasurementBook;
-using MAS.Core.Domain.MeasurementBook;
+using MAS.Core.Domain.Store.MeasurementBook;
 
 namespace MAS.Web.ApiControllers
 {

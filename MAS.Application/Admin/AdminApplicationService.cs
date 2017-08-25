@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using MAS.Core.Domain.Admin;
-using MAS.Core.Domain.Indent;
+using MAS.Core.Domain.Store.Indent;
 using MAS.Core.Interface.Repository.Admin;
 
 

@@ -24,6 +24,9 @@ namespace MAS.Web
             services.AddScoped<MAS.Core.Interface.Application.Admin.IAdminApplicationService, MAS.Application.Admin.AdminApplicationService>();
             services.AddScoped<Core.Interface.Repository.Admin.IAdminRepositoryService, Repository.Admin.AdminRepositoryService>();
 
+            services.AddScoped<MAS.Core.Interface.Application.MasterRegister.IMasterRegisterApplicationService, MAS.Application.MasterRegister.MasterRegisterApplicationService>();
+            services.AddScoped<Core.Interface.Repository.MasterRegister.IMasterRegisterRepositoryService, Repository.MasterRegister.MasterRegisterRepositoryService>();
+
 
 
             return services;

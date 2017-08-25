@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using MAS.Core.Domain.Base;
 
-namespace MAS.Core.Domain.MeasurementBook
+namespace MAS.Core.Domain.Store.MeasurementBook
 {
     public class MeasurementBookTable : AuditBaseDomain<long>
     {
@@ -11,6 +11,7 @@ namespace MAS.Core.Domain.MeasurementBook
         public virtual string Description { get; set; }
         public virtual decimal Quantity { get; set; }
         public virtual string HeadOfAccount { get; set; }
+        public virtual MasterRegister.MasterRegister MasterRegister { get; set; }
         public virtual long MeasurementBookID { get; set; }
     }
 }

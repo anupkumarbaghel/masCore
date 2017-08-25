@@ -4,7 +4,7 @@ using System.Text;
 using MAS.Core.Domain.Base;
 using System.ComponentModel.DataAnnotations;
 
-namespace MAS.Core.Domain.MeasurementBook
+namespace MAS.Core.Domain.Store.MeasurementBook
 {
     public class MeasurementBook : AuditBaseDomain<long>
     {
@@ -16,6 +16,9 @@ namespace MAS.Core.Domain.MeasurementBook
         public virtual string WorkOrderNumber { get; set; }
         [StringLength(200)]
         public virtual string MBNumber { get; set; }
+
+        public virtual DateTime? MeasurementDate { get; set; }
+
         [StringLength(10)]
         public virtual string PageNumber { get; set; }
         public virtual ICollection<MeasurementBookTable> MBTable { get; set; }

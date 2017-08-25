@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MAS.Core.Domain.Indent;
+using MAS.Core.Domain.Store.Indent;
 using MAS.Core.Interface.Repository.Indent;
 
 
@@ -16,11 +16,11 @@ namespace MAS.Application.Indent
             _IndentService = indentService;
         }
 
-        public Core.Domain.Indent.Indent CreateEditIndent(Core.Domain.Indent.Indent indent)
+        public Core.Domain.Store.Indent.Indent CreateEditIndent(Core.Domain.Store.Indent.Indent indent)
         {
             return _IndentService.CreateEditIndent(indent);
         }
-        public void DraftOpenIndent(Core.Domain.Indent.Indent indent)
+        public void DraftOpenIndent(Core.Domain.Store.Indent.Indent indent)
         {
            _IndentService.DraftOpenIndent(indent);
         }
@@ -30,17 +30,17 @@ namespace MAS.Application.Indent
             return _IndentService.DeleteIndent(ID);
         }
 
-        public IEnumerable<Core.Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
+        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
         {
             return _IndentService.GetAllIndentByStatus(indentStatus,storeID);
         }
 
-        public Core.Domain.Indent.Indent GetIndent(long id)
+        public Core.Domain.Store.Indent.Indent GetIndent(long id)
         {
             return _IndentService.GetIndent(id);
         }
 
-        public Core.Domain.Indent.Indent GetOpenIndent(int storeID)
+        public Core.Domain.Store.Indent.Indent GetOpenIndent(int storeID)
         {
             return _IndentService.GetOpenIndent(storeID);
         }

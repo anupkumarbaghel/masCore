@@ -7,11 +7,11 @@ namespace MAS.Core.Interface.Application.Indent
 {
     public interface IIendentService
     {
-        IEnumerable<Domain.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID);
-        Domain.Indent.Indent GetIndent(long id);
-        Domain.Indent.Indent GetOpenIndent(int storeID);
-        Domain.Indent.Indent CreateEditIndent(Domain.Indent.Indent indent);
-        void DraftOpenIndent(Domain.Indent.Indent indent);
+        IEnumerable<Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID);
+        Domain.Store.Indent.Indent GetIndent(long id);
+        Domain.Store.Indent.Indent GetOpenIndent(int storeID);
+        Domain.Store.Indent.Indent CreateEditIndent(Domain.Store.Indent.Indent indent);
+        void DraftOpenIndent(Domain.Store.Indent.Indent indent);
         long DeleteIndent(long ID);
        
     }

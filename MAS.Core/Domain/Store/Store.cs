@@ -19,6 +19,7 @@ namespace MAS.Core.Domain.Store
 
         public virtual int AdminID { get; set; }
 
+        public virtual ICollection<MeasurementBook.MeasurementBook> MasterRegisterCollection { get; set; }
         public virtual ICollection<Indent.Indent> IndentCollection { get; set; }
         public virtual ICollection<MeasurementBook.MeasurementBook> MeasurementBookCollection { get; set; }
     }

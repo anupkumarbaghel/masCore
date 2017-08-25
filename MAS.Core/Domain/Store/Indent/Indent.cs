@@ -5,7 +5,7 @@ using MAS.Core.Domain.Base;
 using System.ComponentModel.DataAnnotations;
 
 
-namespace MAS.Core.Domain.Indent
+namespace MAS.Core.Domain.Store.Indent
 {
     public class Indent : AuditBaseDomain<long>
     {
@@ -13,6 +13,7 @@ namespace MAS.Core.Domain.Indent
         public virtual string IndentNumber { get; set; }
    
         public virtual DateTime? IndentDate { get; set; }
+        public virtual DateTime? SubmittedDate { get; set; }
         [StringLength(200)]
         public virtual string ProvidedTo { get; set; }
         [StringLength(200)]
@@ -25,6 +26,10 @@ namespace MAS.Core.Domain.Indent
         [StringLength(10)]
         public virtual string IndentStatus { get; set; }
 
+        public virtual Boolean IsReceive { get; set; }
+
         public virtual int StoreID { get; set; }
+
+       
     }
 }

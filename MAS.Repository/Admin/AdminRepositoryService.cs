@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MAS.Core.Domain.Admin;
-using MAS.Core.Domain.Indent;
+using MAS.Core.Domain.Store.Indent;
 using Microsoft.EntityFrameworkCore;
 
 namespace MAS.Repository.Admin
