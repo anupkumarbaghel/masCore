@@ -105,9 +105,6 @@ namespace MAS.Repository.Migrations
                     b.Property<long>("ID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ContractorName")
-                        .HasMaxLength(200);
-
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");
@@ -195,6 +192,9 @@ namespace MAS.Repository.Migrations
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsDelete");
+
+                    b.Property<string>("LUNOrderNo")
+                        .HasMaxLength(200);
 
                     b.Property<string>("MBNumber")
                         .HasMaxLength(200);

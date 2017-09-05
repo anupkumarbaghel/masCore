@@ -1,0 +1,9 @@
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\bin\Debug\netcoreapp1.1\MAS.ExcelReport.deps.json
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\bin\Debug\netcoreapp1.1\MAS.ExcelReport.dll
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Debug\netcoreapp1.1\MAS.ExcelReport.csprojResolveAssemblyReference.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Debug\netcoreapp1.1\MAS.ExcelReport.AssemblyInfo.cs
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\bin\Debug\netcoreapp1.1\MAS.ExcelReport.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\bin\Debug\netcoreapp1.1\MAS.Core.dll
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\bin\Debug\netcoreapp1.1\MAS.Core.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Debug\netcoreapp1.1\MAS.ExcelReport.dll
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Debug\netcoreapp1.1\MAS.ExcelReport.pdb

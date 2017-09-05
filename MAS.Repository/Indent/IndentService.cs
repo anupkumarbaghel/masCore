@@ -64,9 +64,16 @@ namespace MAS.Repository.Indent
 
         public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
         {
-            return _context.Indents.Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID).ToList();
+            return _context.Indents
+                .Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID).ToList();
         }
-
+        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentExcelReport(Core.Domain.ExcelReport.ExcelReportInputModel excelInputModel)
+        {
+            return _context.Indents.Include(e => e.IndentTableCollection)
+                 .ThenInclude(f => f.MasterRegister)
+                .Where(e => e.IndentStatus == "s" && e.StoreID == excelInputModel.StoreID).ToList();
+        }
+        
         public Core.Domain.Store.Indent.Indent GetIndent(long id)
         {
             return _context.Indents.Include(e => e.IndentTableCollection)

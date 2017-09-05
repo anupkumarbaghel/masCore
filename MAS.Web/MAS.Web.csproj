@@ -48,6 +48,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MAS.Application\MAS.Application.csproj" />
     <ProjectReference Include="..\MAS.Core\MAS.Core.csproj" />
+    <ProjectReference Include="..\MAS.ExcelReport\MAS.ExcelReport.csproj" />
     <ProjectReference Include="..\MAS.Repository\MAS.Repository.csproj" />
   </ItemGroup>
 

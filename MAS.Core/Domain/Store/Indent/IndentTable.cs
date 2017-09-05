@@ -14,8 +14,7 @@ namespace MAS.Core.Domain.Store.Indent
         public virtual decimal Quantity { get; set; }
         [StringLength(200)]
         public virtual string HeadOfAccount { get; set; }
-        [StringLength(200)]
-        public virtual string ContractorName { get; set; }
+        
         public virtual MasterRegister.MasterRegister MasterRegister { get; set; }
         public virtual long IndentID { get; set; }
     }

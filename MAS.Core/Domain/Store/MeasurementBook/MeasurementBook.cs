@@ -14,6 +14,10 @@ namespace MAS.Core.Domain.Store.MeasurementBook
         public virtual string AggrementNumber { get; set; }
         [StringLength(200)]
         public virtual string WorkOrderNumber { get; set; }
+
+        [StringLength(200)]
+        public virtual string LUNOrderNo { get; set; }
+
         [StringLength(200)]
         public virtual string MBNumber { get; set; }
 

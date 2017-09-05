@@ -56,8 +56,17 @@ namespace MAS.Repository.MeasurementBook
 
         public IEnumerable<Core.Domain.Store.MeasurementBook.MeasurementBook> GetAllMeasurementBookByStatus(string measurementBookStatus,int storeID)
         {
-            return _context.MeasurementBooks.Where(e => e.MeasurementBookStatus == measurementBookStatus 
+            return _context.MeasurementBooks
+                .Where(e => e.MeasurementBookStatus == measurementBookStatus 
             && e.StoreID==storeID ).ToList();
+        }
+
+        public IEnumerable<Core.Domain.Store.MeasurementBook.MeasurementBook> GetAllMeasurementForExcelReport(Core.Domain.ExcelReport.ExcelReportInputModel excelInputModel)
+        {
+            return _context.MeasurementBooks.Include(e => e.MBTable)
+                 .ThenInclude(f => f.MasterRegister)
+                .Where(e => e.MeasurementBookStatus == "s"
+            && e.StoreID == excelInputModel.StoreID).ToList();
         }
 
         public Core.Domain.Store.MeasurementBook.MeasurementBook GetMeasurementBook(long id)

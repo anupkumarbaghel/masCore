@@ -27,6 +27,9 @@ namespace MAS.Web
             services.AddScoped<MAS.Core.Interface.Application.MasterRegister.IMasterRegisterApplicationService, MAS.Application.MasterRegister.MasterRegisterApplicationService>();
             services.AddScoped<Core.Interface.Repository.MasterRegister.IMasterRegisterRepositoryService, Repository.MasterRegister.MasterRegisterRepositoryService>();
 
+            services.AddScoped<MAS.Core.Interface.Application.ExcelReport.IGenerateExcelReportApplication, MAS.Application.ExcelReport.GenerateExcelReportApplication>();
+            services.AddScoped<Core.Interface.ExcelReport.IGenerateExcelReport,MAS.ExcelReport.GenerateExcelReport>();
+
 
 
             return services;
