@@ -61,7 +61,7 @@ namespace MAS.Repository.MeasurementBook
             && e.StoreID==storeID ).ToList();
         }
 
-        public IEnumerable<Core.Domain.Store.MeasurementBook.MeasurementBook> GetAllMeasurementForExcelReport(Core.Domain.ExcelReport.ExcelReportInputModel excelInputModel)
+        public IEnumerable<Core.Domain.Store.MeasurementBook.MeasurementBook> GetAllMeasurementForExcelReport(Core.DTO.DTOExcelReportInput excelInputModel)
         {
             return _context.MeasurementBooks.Include(e => e.MBTable)
                  .ThenInclude(f => f.MasterRegister)

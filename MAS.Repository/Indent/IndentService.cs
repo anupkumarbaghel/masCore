@@ -67,7 +67,7 @@ namespace MAS.Repository.Indent
             return _context.Indents
                 .Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID).ToList();
         }
-        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentExcelReport(Core.Domain.ExcelReport.ExcelReportInputModel excelInputModel)
+        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentExcelReport(Core.DTO.DTOExcelReportInput excelInputModel)
         {
             return _context.Indents.Include(e => e.IndentTableCollection)
                  .ThenInclude(f => f.MasterRegister)

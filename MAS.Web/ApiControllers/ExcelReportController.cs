@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MAS.Core.Interface.Application.ExcelReport;
-using MAS.Core.Domain.ExcelReport;
+using MAS.Core.DTO;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MAS.Web.ApiControllers
 {
@@ -15,13 +16,15 @@ namespace MAS.Web.ApiControllers
     public class ExcelReportController : Controller
     {
         private readonly IGenerateExcelReportApplication _excelReport;
-        public ExcelReportController(IGenerateExcelReportApplication excelReport)
+        private readonly IHostingEnvironment _env;
+        public ExcelReportController(IGenerateExcelReportApplication excelReport, IHostingEnvironment env)
         {
             _excelReport = excelReport;
+            _env = env;
         }
 
         [HttpPost]
-        public IActionResult PostGenerateExcelReport([FromBody] ExcelReportInputModel excelReportInput)
+        public IActionResult PostGenerateExcelReport([FromBody] DTOExcelReportInput excelReportInput)
         {
             if (!ModelState.IsValid)
             {
@@ -30,15 +33,25 @@ namespace MAS.Web.ApiControllers
 
             MemoryStream msExcelReport = _excelReport.GenerateExcelReport(excelReportInput);
 
-            using (var file = System.IO.File.Open( "MAS Report.xlsx", FileMode.Create))
+            string sWebRootFolder = _env.WebRootPath;
+            string pathFileName = @"report/"+excelReportInput.StoreName;
+            string fileName = @"MAS Account.xlsx";
+            string conbinedPath = Path.Combine(pathFileName, fileName);
+            string reportURL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, conbinedPath);
+            string filePath = Path.Combine(sWebRootFolder, conbinedPath);
+            string directoryfile = Path.Combine(sWebRootFolder, pathFileName);
+            System.IO.Directory.CreateDirectory(directoryfile);
+
+
+            using (var file = System.IO.File.Open(filePath, FileMode.Create))
             {
                 msExcelReport.Position = 0; // reset the position of the memory stream
                 msExcelReport.CopyTo(file); // copy the memory stream to the file stream
             }
             msExcelReport.Dispose();
-           
 
-            return Ok();
+            excelReportInput.ReportUrl = reportURL;
+            return Ok(excelReportInput);
         }
 
         

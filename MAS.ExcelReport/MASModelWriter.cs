@@ -72,22 +72,25 @@ namespace MAS.ExcelReport
         {
             int row = startRow, col = 1, rowSpan = 1, colSpan = 1;
             string cellValue = string.Empty;
+            int lastColumn = GetLastcolumn(headers);
 
-            WriteModelSub(MASReport, receiveModels, headers, ref row, ref col, rowSpan, colSpan, ref cellValue);
+            WriteModelSub(MASReport, receiveModels, headers, ref row, ref col, rowSpan, colSpan, ref cellValue, lastColumn);
 
-            WriteModelFooterReceive(MASReport, startRow, headers, ref row, ref col, rowSpan, out colSpan, out cellValue);
+            WriteModelFooterReceive(MASReport, startRow, headers, ref row, ref col, rowSpan, out colSpan, out cellValue, lastColumn);
 
             col = 1; rowSpan = 0; colSpan = 4;
             cellValue = "Issue during the month";
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 11, isBackColorYellow: true);
             row++;colSpan = 1;
 
-            WriteModelSub(MASReport, issueModels, headers, ref row, ref col, rowSpan, colSpan, ref cellValue);
+            WriteModelSub(MASReport, issueModels, headers, ref row, ref col, rowSpan, colSpan, ref cellValue, lastColumn);
 
-            WriteModelFooterIssue(MASReport, _issueStartRow, headers, ref row, ref col, rowSpan, out colSpan, out cellValue);
+            WriteModelFooterIssue(MASReport, _issueStartRow, headers, ref row, ref col, rowSpan, out colSpan, out cellValue, lastColumn);
 
         }
-        private void WriteModelSub(ExcelWorksheet MASReport, List<IndentMBExcelReportModel> models, List<MASMaterialHeader> headers, ref int row, ref int col, int rowSpan, int colSpan, ref string cellValue)
+
+
+        private void WriteModelSub(ExcelWorksheet MASReport, List<IndentMBExcelReportModel> models, List<MASMaterialHeader> headers, ref int row, ref int col, int rowSpan, int colSpan, ref string cellValue,int lastColumn)
         {
             foreach (IndentMBExcelReportModel model in models)
             {
@@ -106,6 +109,7 @@ namespace MAS.ExcelReport
                 cellValue = model.HeadOfAccount;
                 WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: false);
 
+                
                 foreach (var excelMaterial in model.IndentMBMaterials)
                 {
                     col = findColumnNumber(headers, excelMaterial.MasterRegisterID);
@@ -117,17 +121,14 @@ namespace MAS.ExcelReport
                 col = 1;
             }
         }
-        private void WriteModelFooterReceive(ExcelWorksheet MASReport, int startRow, List<MASMaterialHeader> headers, ref int row, ref int col, int rowSpan, out int colSpan, out string cellValue)
+
+        private void WriteModelFooterReceive(ExcelWorksheet MASReport, int startRow, List<MASMaterialHeader> headers, ref int row, ref int col, int rowSpan, out int colSpan, out string cellValue, int lastColumn)
         {
             _endCalculationRow = row - 1;
             colSpan = 4;
             cellValue = "Total Received during the month";
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true);
-            int lastColumn = 5;
-            foreach (var header in headers)
-            {
-                lastColumn += header.level1.ColSpan;
-            }
+           
             for (int i = 5; i < lastColumn; i++)
             {
                 col = i; colSpan = 1;
@@ -143,18 +144,15 @@ namespace MAS.ExcelReport
             }
             col = 1;row++; _issueStartRow = row+1;
         }
-
-        private void WriteModelFooterIssue(ExcelWorksheet MASReport, int startRow, List<MASMaterialHeader> headers, ref int row, ref int col, int rowSpan, out int colSpan, out string cellValue)
+        
+        private void WriteModelFooterIssue(ExcelWorksheet MASReport, int startRow, List<MASMaterialHeader> headers, ref int row, ref int col, int rowSpan, out int colSpan, out string cellValue, int lastColumn)
         {
             _endCalculationRowIssue = row - 1;
             colSpan = 4;
             cellValue = "Total Issue during the month";
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true);
-            int lastColumn = 5;
-            foreach (var header in headers)
-            {
-                lastColumn += header.level1.ColSpan;
-            }
+           
+           
             for (int i = 5; i < lastColumn; i++)
             {
                 col = i; colSpan = 1;
@@ -163,6 +161,7 @@ namespace MAS.ExcelReport
             row++; col = 1; colSpan = 4;
             cellValue = "Closing Balance";
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true);
+            string lastCellAddress=string.Empty;
             for (int i = 5; i < lastColumn; i++)
             {
                 col = i; colSpan = 1;
@@ -174,7 +173,26 @@ namespace MAS.ExcelReport
                     ,_endCalculationRow
                     , isBold: true);
             }
-           //MAS ends here
+            for (int r = 1; r < row; r++)
+            {
+                for (int i = 5; i < lastColumn; i++)
+                {
+                    MASReport.Cells[r, i].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
+                }
+            }
+           
+
+            //MAS ends here
+        }
+
+        private int GetLastcolumn(List<MASMaterialHeader> headers)
+        {
+            int lastColumn = 5;
+            foreach (var header in headers)
+            {
+                lastColumn += header.level1.ColSpan;
+            }
+            return lastColumn;
         }
     }
 }

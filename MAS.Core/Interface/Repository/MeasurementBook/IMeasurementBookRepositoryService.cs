@@ -9,7 +9,7 @@ namespace MAS.Core.Interface.Repository.MeasurementBook
         IEnumerable<Domain.Store.MeasurementBook.MeasurementBook> 
             GetAllMeasurementBookByStatus(string measurementBookStatus,int storeID);
         IEnumerable<Domain.Store.MeasurementBook.MeasurementBook>
-           GetAllMeasurementForExcelReport(Domain.ExcelReport.ExcelReportInputModel excelReportInput);
+           GetAllMeasurementForExcelReport(DTO.DTOExcelReportInput excelReportInput);
         Domain.Store.MeasurementBook.MeasurementBook GetMeasurementBook(long id);
         Domain.Store.MeasurementBook.MeasurementBook GetOpenMeasurementBook(int storeID);
         Domain.Store.MeasurementBook.MeasurementBook CreateEditMeasurementBook(Domain.Store.MeasurementBook.MeasurementBook measurementBook);

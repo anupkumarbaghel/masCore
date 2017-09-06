@@ -82,6 +82,8 @@ namespace MAS.ExcelReport
             result = mb.NameOfContractor;
             if (!string.IsNullOrEmpty(mb.MBNumber))
                 result = result + ", MB " + mb.MBNumber;
+            if (!string.IsNullOrEmpty(mb.LUNOrderNo))
+                result = result + ", LUN NO " + mb.LUNOrderNo;
             if (!string.IsNullOrEmpty(mb.PageNumber))
                 result = result + ", Page " + mb.PageNumber;
             if (!string.IsNullOrEmpty(mb.AggrementNumber))

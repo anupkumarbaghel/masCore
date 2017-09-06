@@ -6,7 +6,7 @@ using MAS.Core.Interface.Application.ExcelReport;
 using MAS.Core.Domain.Store.MasterRegister;
 using MAS.Core.Interface.ExcelReport;
 using MAS.Core.Interface.Repository.MasterRegister;
-using MAS.Core.Domain.ExcelReport;
+using MAS.Core.DTO;
 using MAS.Core.Interface.Repository.Indent;
 using MAS.Core.Interface.Repository.MeasurementBook;
 
@@ -28,12 +28,12 @@ namespace MAS.Application.ExcelReport
             _indentService = indentService;
             _measurementBookService = measurementBookService;
         }
-        public MemoryStream GenerateExcelReport(ExcelReportInputModel excelReportInputModel)
+        public MemoryStream GenerateExcelReport(DTOExcelReportInput excelReportInputModel)
         {
             var masterRegisters =  _masterRegisterRepositoryService.GetAllMasterRegisterOfStore(excelReportInputModel.StoreID);
             var indents = _indentService.GetAllIndentExcelReport(excelReportInputModel);
             var mbs = _measurementBookService.GetAllMeasurementForExcelReport(excelReportInputModel);
-            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs);
+            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs, excelReportInputModel.StoreName);
         }
     }
 }

@@ -10,6 +10,6 @@ namespace MAS.Core.Interface.ExcelReport
 {
     public interface IGenerateExcelReport
     {
-        MemoryStream GenerateExcelReport(List<MasterRegister> masterRegister, IEnumerable<Indent> indents, IEnumerable<MeasurementBook> mbs);
+        MemoryStream GenerateExcelReport(List<MasterRegister> masterRegister, IEnumerable<Indent> indents, IEnumerable<MeasurementBook> mbs,string storeName);
     }
 }

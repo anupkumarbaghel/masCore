@@ -13,7 +13,7 @@ namespace MAS.ExcelReport
 {
     public class GenerateExcelReport : IGenerateExcelReport
     {
-        MemoryStream IGenerateExcelReport.GenerateExcelReport(List<MasterRegister> masterRegister,IEnumerable<Indent> indents,IEnumerable<MeasurementBook> mbs)
+        MemoryStream IGenerateExcelReport.GenerateExcelReport(List<MasterRegister> masterRegister,IEnumerable<Indent> indents,IEnumerable<MeasurementBook> mbs,string storeName)
         {
             ExcelPackage exlPackage = new ExcelPackage();
             ExcelWorksheet MASReport = exlPackage.Workbook.Worksheets.Add("MAS Report");
@@ -27,7 +27,7 @@ namespace MAS.ExcelReport
             MASReport.Row(4).Height = 50;
 
             int row = 1, col = 1, rowSpan = 0, colSpan = 4;
-            string cellValue = "MAS ACCOUNT for Simhastha 2016  - Month of April 2016";
+            string cellValue = storeName;
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 14);
 
             ///////
