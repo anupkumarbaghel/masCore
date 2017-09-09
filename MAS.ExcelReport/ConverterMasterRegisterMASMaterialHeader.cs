@@ -52,7 +52,7 @@ namespace MAS.ExcelReport
                 header.level = 3;
             }
         }
-        public List<MASMaterialHeader> GenerateHeader(List<MasterRegister> registers)
+        public List<MASMaterialHeader> GenerateHeader(List<MasterRegister> registers,List<MAS.Core.DTO.DTOOpeningBalance> openingBalances)
         {
             List<MASMaterialHeader> MASExcelHeaders = new List<MASMaterialHeader>();
 
@@ -70,8 +70,17 @@ namespace MAS.ExcelReport
 
                 if (header.level == 1)
                 {
-                    header.level1.leafVallue = new LeafeValue() { Sno = Group1stItem.SerialNumber.ToString()
-                    ,MasterRegisterID=Group1stItem.MasterRegisterID};
+                    decimal openingBal = 0;
+                   if(openingBalances.Where(e => e.ID == Group1stItem.MasterRegisterID).FirstOrDefault()!=null)
+                        openingBal = openingBalances.Find(e => e.ID == Group1stItem.MasterRegisterID).OpeningBalance;
+                    header.level1.leafVallue = new LeafeValue()
+                    {
+                        Sno = Group1stItem.SerialNumber.ToString()
+                    ,
+                        MasterRegisterID = Group1stItem.MasterRegisterID
+                     , OpeningBalance = openingBal
+                    };
+                    
                 }
                 else
                 {
@@ -84,8 +93,14 @@ namespace MAS.ExcelReport
 
                         if (header.level == 2)
                         {
+                            decimal openingBal = 0;
+                            if (openingBalances.Where(e => e.ID == Group1stItem.MasterRegisterID).FirstOrDefault() != null)
+                                openingBal = openingBalances.Find(e => e.ID == Group1stItem.MasterRegisterID).OpeningBalance;
                             lvl2.leafVallue = new LeafeValue() { Sno = level2Group.First().SerialNumber.ToString()
-                            ,MasterRegisterID= level2Group.First().MasterRegisterID};
+                            ,MasterRegisterID= level2Group.First().MasterRegisterID
+                             ,
+                                OpeningBalance = openingBal
+                            };
                         }
                         else
                         {
@@ -93,10 +108,17 @@ namespace MAS.ExcelReport
                             var level3Groups = level2Group.GroupBy(e => e.Level3);
                             foreach (var level3Group in level3Groups)
                             {
+                                decimal openingBal = 0;
+                                if (openingBalances.Where(e => e.ID == Group1stItem.MasterRegisterID).FirstOrDefault() != null)
+                                    openingBal = openingBalances.Find(e => e.ID == Group1stItem.MasterRegisterID).OpeningBalance;
+
                                 Level3 lvl3 = new Level3();
                                 lvl3.MainContent = level3Group.Key;
                                 lvl3.leafVallue = new LeafeValue() { Sno = level3Group.First().SerialNumber.ToString()
-                                ,MasterRegisterID=level3Group.First().MasterRegisterID};
+                                ,MasterRegisterID=level3Group.First().MasterRegisterID
+                                 ,
+                                    OpeningBalance = openingBal
+                                };
 
                                 lvl2.level3s.Add(lvl3);
                             }

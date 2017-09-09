@@ -6,7 +6,8 @@ namespace MAS.ExcelReport
     {
         public string Sno { get; set; }
         public int ColumnNumber { get; set; }
-        public int MasterRegisterID;
+        public int MasterRegisterID { get; set; }
+        public decimal OpeningBalance { get; set; }
     }
     internal class Level3
     {

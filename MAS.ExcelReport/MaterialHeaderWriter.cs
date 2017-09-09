@@ -56,6 +56,10 @@ namespace MAS.ExcelReport
             cellValue = header.level1.leafVallue.Sno;
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 9);
 
+            row = row + rowSpan; rowSpan = 1;
+            decimal deciCellValue = header.level1.leafVallue.OpeningBalance;
+            WorkSheetWriter.SetCell(MASReport, deciCellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 9);
+
             return _StartColumn + colSpan;
         }
         private int WriteLevel2Header(MASMaterialHeader header)
@@ -81,6 +85,9 @@ namespace MAS.ExcelReport
                 cellValue = l2.leafVallue.Sno;
                 WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 9);
 
+                row = row + rowSpan; rowSpan = 1; colSpan = 1;
+                decimal deciCellValue = l2.leafVallue.OpeningBalance;
+                WorkSheetWriter.SetCell(MASReport, deciCellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 9);
 
 
                 colstartl2 += colSpan;
@@ -123,6 +130,9 @@ namespace MAS.ExcelReport
                     cellValue = l3.leafVallue.Sno;
                     WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 9);
 
+                    row = row + rowSpan; rowSpan = 1; colSpan = 1;
+                    decimal deciCellValue = l3.leafVallue.OpeningBalance;
+                    WorkSheetWriter.SetCell(MASReport, deciCellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 9);
 
 
                     colstartl3 += colSpan;

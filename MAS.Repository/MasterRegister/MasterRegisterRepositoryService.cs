@@ -4,6 +4,7 @@ using System.Linq;
 using MAS.Core.Domain.Store.MasterRegister;
 using System;
 using System.Collections.Generic;
+using MAS.Core.DTO;
 
 namespace MAS.Repository.MasterRegister
 {
@@ -27,5 +28,16 @@ namespace MAS.Repository.MasterRegister
         {
             return _context.MasterRegisters.Where(e => e.StoreID == storeID).ToList();
         }
+
+        public List<DTOOpeningBalance> GetOpeningBalance(int StoreID, DateTime? LastDate)
+        {
+            if (LastDate == null) LastDate = DateTime.Now.AddYears(-100);
+            return _context.DTOOpeningBalances
+                .FromSql("[dbo].[usp_GetOpeningBalance] @p0, @p1",
+                    StoreID,LastDate)
+              .ToList();
+        }
+
+        
     }
 }

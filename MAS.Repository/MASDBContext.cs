@@ -16,6 +16,7 @@ namespace MAS.Repository
         public DbSet<MAS.Core.Domain.Admin.Admin> Admins { get; set; }
         public DbSet<MAS.Core.Domain.Store.Store> Stores { get; set; }
         public DbSet<MAS.Core.Domain.Store.MasterRegister.MasterRegister> MasterRegisters { get; set; }
+        public DbSet<MAS.Core.DTO.DTOOpeningBalance> DTOOpeningBalances { get; set; }
 
 
     }

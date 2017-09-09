@@ -71,7 +71,10 @@ namespace MAS.Repository.Indent
         {
             return _context.Indents.Include(e => e.IndentTableCollection)
                  .ThenInclude(f => f.MasterRegister)
-                .Where(e => e.IndentStatus == "s" && e.StoreID == excelInputModel.StoreID).ToList();
+                .Where(e => e.IndentStatus == "s" 
+                && e.StoreID == excelInputModel.StoreID
+                && e.SubmittedDate>=excelInputModel.StartDate
+                && e.SubmittedDate<=excelInputModel.EndDate).ToList();
         }
         
         public Core.Domain.Store.Indent.Indent GetIndent(long id)

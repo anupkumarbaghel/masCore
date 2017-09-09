@@ -13,7 +13,7 @@ namespace MAS.ExcelReport
 {
     public class GenerateExcelReport : IGenerateExcelReport
     {
-        MemoryStream IGenerateExcelReport.GenerateExcelReport(List<MasterRegister> masterRegister,IEnumerable<Indent> indents,IEnumerable<MeasurementBook> mbs,string storeName)
+        MemoryStream IGenerateExcelReport.GenerateExcelReport(List<MasterRegister> masterRegister,IEnumerable<Indent> indents,IEnumerable<MeasurementBook> mbs,string storeName,List<MAS.Core.DTO.DTOOpeningBalance> openingBalances)
         {
             ExcelPackage exlPackage = new ExcelPackage();
             ExcelWorksheet MASReport = exlPackage.Workbook.Worksheets.Add("MAS Report");
@@ -69,7 +69,7 @@ namespace MAS.ExcelReport
 
 
             ConverterMasterRegisterMASMaterialHeader headerConverter = new ConverterMasterRegisterMASMaterialHeader();
-            List<MASMaterialHeader> headers = headerConverter.GenerateHeader(masterRegister);
+            List<MASMaterialHeader> headers = headerConverter.GenerateHeader(masterRegister,openingBalances);
 
             MaterialHeaderWriter headerWriter = new MaterialHeaderWriter(headers, MASReport, 5);
             headerWriter.WriteHeader();

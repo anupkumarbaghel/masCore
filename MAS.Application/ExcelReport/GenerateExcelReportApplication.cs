@@ -33,7 +33,8 @@ namespace MAS.Application.ExcelReport
             var masterRegisters =  _masterRegisterRepositoryService.GetAllMasterRegisterOfStore(excelReportInputModel.StoreID);
             var indents = _indentService.GetAllIndentExcelReport(excelReportInputModel);
             var mbs = _measurementBookService.GetAllMeasurementForExcelReport(excelReportInputModel);
-            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs, excelReportInputModel.StoreName);
+            List<DTOOpeningBalance> openigBalances = _masterRegisterRepositoryService.GetOpeningBalance(excelReportInputModel.StoreID, excelReportInputModel.StartDate);
+            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs, excelReportInputModel.StoreName, openigBalances);
         }
     }
 }

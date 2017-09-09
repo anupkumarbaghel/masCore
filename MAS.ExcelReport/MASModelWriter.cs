@@ -11,6 +11,8 @@ namespace MAS.ExcelReport
         int _endCalculationRowIssue = 0;
         int _issueStartRow = 0;
         int _receiveStartRow = 0;
+        int _totalUptoDateReceivedRow = 0;
+        int _totalIssueDuringTheMonthRow = 0;
 
         public MASModelWriter(ExcelWorksheet MASReport, List<IndentMBExcelReportModel> receiveModels
             , List<IndentMBExcelReportModel> issueModels
@@ -142,6 +144,7 @@ namespace MAS.ExcelReport
                 col = i; colSpan = 1;
                 WorkSheetWriter.SetAddFormulaOnCell(MASReport, row, col, rowSpan, colSpan, startRow - 2, _endCalculationRow, isBold: true);
             }
+            _totalUptoDateReceivedRow = row;
             col = 1;row++; _issueStartRow = row+1;
         }
         
@@ -151,13 +154,14 @@ namespace MAS.ExcelReport
             colSpan = 4;
             cellValue = "Total Issue during the month";
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true);
-           
-           
+            _totalIssueDuringTheMonthRow = row;
             for (int i = 5; i < lastColumn; i++)
             {
                 col = i; colSpan = 1;
                 WorkSheetWriter.SetAddFormulaOnCell(MASReport, row, col, rowSpan, colSpan, startRow, _endCalculationRowIssue, isBold: true);
             }
+           
+
             row++; col = 1; colSpan = 4;
             cellValue = "Closing Balance";
             WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true);
@@ -165,12 +169,10 @@ namespace MAS.ExcelReport
             for (int i = 5; i < lastColumn; i++)
             {
                 col = i; colSpan = 1;
-                WorkSheetWriter.SetAddFormulaOnCell(MASReport
+                WorkSheetWriter.SetClosingBalanceFormula(MASReport
                     , row, col, rowSpan, colSpan
-                    ,_issueStartRow
-                    ,_endCalculationRowIssue
-                    ,_receiveStartRow
-                    ,_endCalculationRow
+                    , _totalUptoDateReceivedRow
+                    , _totalIssueDuringTheMonthRow
                     , isBold: true);
             }
             for (int r = 1; r < row; r++)

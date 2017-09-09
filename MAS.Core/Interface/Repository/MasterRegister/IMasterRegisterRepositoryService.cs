@@ -8,5 +8,6 @@ namespace MAS.Core.Interface.Repository.MasterRegister
     {
         List<MAS.Core.Domain.Store.MasterRegister.MasterRegister> GetAllMasterRegisterOfStore(int storeID);
         MAS.Core.Domain.Store.MasterRegister.MasterRegister CreateMasterRegister(MAS.Core.Domain.Store.MasterRegister.MasterRegister masterRegister);
+        List<MAS.Core.DTO.DTOOpeningBalance> GetOpeningBalance(int StoreID, DateTime? LastDate);
     }
 }

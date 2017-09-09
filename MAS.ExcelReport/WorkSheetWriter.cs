@@ -64,7 +64,7 @@ namespace MAS.ExcelReport
             cell.Formula = formula;
             return cell.Start.Column;
         }
-        public static string SetAddFormulaOnCell(ExcelWorksheet ws, int row, int col, int rowSpan, int colSpan, int issueStartRow, int issueEndRow,int receiveStartRow,int receiveEndRow, bool isBold = false, float textSize = 9, bool isBackColorYellow = false)
+        public static string SetClosingBalanceFormula(ExcelWorksheet ws, int row, int col, int rowSpan, int colSpan, int receiveRow, int issueRow, bool isBold = false, float textSize = 9, bool isBackColorYellow = false)
         {
             if (rowSpan > 0) rowSpan--; if (colSpan > 0) colSpan--;
             ExcelRange cell = ws.Cells[row, col, row + rowSpan, col + colSpan];
@@ -79,7 +79,7 @@ namespace MAS.ExcelReport
             cell.Style.Numberformat.Format = "0.00";
             //if(isBackColorYellow) cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Yellow);
             char ltrcell = cell.Address.ToCharArray()[0];
-            string formula = "SUM(" + ltrcell + receiveStartRow.ToString() + ":" + ltrcell + receiveEndRow + ")-SUM("+ltrcell+issueStartRow.ToString() + ":" + ltrcell + issueEndRow + ")";
+            string formula = ltrcell + receiveRow.ToString() + "-" + ltrcell + issueRow.ToString();
             cell.Formula = formula;
             return cell.Address;
         }

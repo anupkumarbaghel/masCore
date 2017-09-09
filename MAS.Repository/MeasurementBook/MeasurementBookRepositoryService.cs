@@ -66,7 +66,10 @@ namespace MAS.Repository.MeasurementBook
             return _context.MeasurementBooks.Include(e => e.MBTable)
                  .ThenInclude(f => f.MasterRegister)
                 .Where(e => e.MeasurementBookStatus == "s"
-            && e.StoreID == excelInputModel.StoreID).ToList();
+            && e.StoreID == excelInputModel.StoreID
+            && e.MeasurementDate>=excelInputModel.StartDate
+            && e.MeasurementDate<=excelInputModel.EndDate
+            ).ToList();
         }
 
         public Core.Domain.Store.MeasurementBook.MeasurementBook GetMeasurementBook(long id)
