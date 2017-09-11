@@ -35,9 +35,11 @@ namespace MAS.Repository.Indent
             }
                 foreach (var indentTable in indent.IndentTableCollection)
             {
-                
-                MAS.Core.Domain.Store.MasterRegister.MasterRegister masterregister = indentTable.MasterRegister;
-                _context.Entry(masterregister).State = EntityState.Unchanged;
+                if (indentTable.MasterRegister.ID > 0)
+                {
+                    MAS.Core.Domain.Store.MasterRegister.MasterRegister masterregister = indentTable.MasterRegister;
+                    _context.Entry(masterregister).State = EntityState.Unchanged;
+                }
             }
             _context.SaveChanges();
             return indent;

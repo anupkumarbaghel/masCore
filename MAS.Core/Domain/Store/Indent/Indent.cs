@@ -26,6 +26,9 @@ namespace MAS.Core.Domain.Store.Indent
         [StringLength(10)]
         public virtual string IndentStatus { get; set; }
 
+        [StringLength(200)]
+        public virtual string HeadOfAccount { get; set; }
+
         public virtual Boolean IsReceive { get; set; }
 
         public virtual int StoreID { get; set; }

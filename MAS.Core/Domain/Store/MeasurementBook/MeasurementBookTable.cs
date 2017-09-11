@@ -10,7 +10,7 @@ namespace MAS.Core.Domain.Store.MeasurementBook
         public virtual string SerialNumber { get; set; }
         public virtual string Description { get; set; }
         public virtual decimal Quantity { get; set; }
-        public virtual string HeadOfAccount { get; set; }
+       
         public virtual MasterRegister.MasterRegister MasterRegister { get; set; }
         public virtual long MeasurementBookID { get; set; }
     }

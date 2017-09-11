@@ -23,6 +23,9 @@ namespace MAS.Core.Domain.Store.MeasurementBook
 
         public virtual DateTime? MeasurementDate { get; set; }
 
+        [StringLength(200)]
+        public virtual string HeadOfAccount { get; set; }
+
         [StringLength(10)]
         public virtual string PageNumber { get; set; }
         public virtual ICollection<MeasurementBookTable> MBTable { get; set; }

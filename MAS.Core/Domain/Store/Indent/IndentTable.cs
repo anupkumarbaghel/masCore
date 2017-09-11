@@ -12,8 +12,7 @@ namespace MAS.Core.Domain.Store.Indent
         public virtual string SerialNo { get; set; }
         public virtual string Description { get; set; }
         public virtual decimal Quantity { get; set; }
-        [StringLength(200)]
-        public virtual string HeadOfAccount { get; set; }
+      
         
         public virtual MasterRegister.MasterRegister MasterRegister { get; set; }
         public virtual long IndentID { get; set; }

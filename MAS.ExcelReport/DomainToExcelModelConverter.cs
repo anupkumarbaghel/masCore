@@ -31,7 +31,7 @@ namespace MAS.ExcelReport
                 model.DateOfReciept = Convert.ToDateTime(indent.SubmittedDate);
                 model.IndentNoNDate = indent.IndentNumber + " / " + indent.IndentDate.ToDate();
                 model.ReceivedIssue = indent.IsReceive ? indent.ProvidedBy : indent.ProvidedTo;
-                model.HeadOfAccount = indent.IndentTableCollection.First().HeadOfAccount;
+                model.HeadOfAccount = indent.HeadOfAccount;
                 model.IndentMBMaterials = new List<IndentMBMaterialExcelReport>();
                 foreach (IndentTable indentMaterial in indent.IndentTableCollection)
                 {
@@ -63,7 +63,7 @@ namespace MAS.ExcelReport
                 model.ReceivedIssue = GetReceivedIssueMB(mb);
 
 
-                model.HeadOfAccount = mb.MBTable.First().HeadOfAccount;
+                model.HeadOfAccount = mb.HeadOfAccount;
                 model.IndentMBMaterials = new List<IndentMBMaterialExcelReport>();
                 foreach (MeasurementBookTable mbMaterial in mb.MBTable)
                 {

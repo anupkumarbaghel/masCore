@@ -8,9 +8,10 @@ using MAS.Repository;
 namespace MAS.Repository.Migrations
 {
     [DbContext(typeof(MASDBContext))]
-    partial class MASDBContextModelSnapshot : ModelSnapshot
+    [Migration("20170911043812_headOfAccountFromTableToHeader")]
+    partial class headOfAccountFromTableToHeader
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")
@@ -189,9 +190,6 @@ namespace MAS.Repository.Migrations
 
                     b.Property<DateTime>("CreatedDate");
 
-                    b.Property<string>("HeadOfAccount")
-                        .HasMaxLength(200);
-
                     b.Property<bool>("IsActive");
 
                     b.Property<bool>("IsDelete");
@@ -245,6 +243,8 @@ namespace MAS.Repository.Migrations
                     b.Property<DateTime>("CreatedDate");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("HeadOfAccount");
 
                     b.Property<bool>("IsActive");
 
