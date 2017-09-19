@@ -19,9 +19,27 @@ namespace MAS.Repository.MasterRegister
 
         public Core.Domain.Store.MasterRegister.MasterRegister CreateMasterRegister(Core.Domain.Store.MasterRegister.MasterRegister masterRegister)
         {
-            _context.Add(masterRegister);
+            if (masterRegister.ID > 0)
+            {
+                _context.Update(masterRegister);
+            }
+            else
+            {
+                _context.Add(masterRegister);
+            }
+
             _context.SaveChanges();
             return masterRegister;
+        }
+
+        public int DeleteMasterRegister(int ID)
+        {
+            Core.Domain.Store.MasterRegister.MasterRegister masterRegister = _context.MasterRegisters.SingleOrDefault(e => e.ID == ID);
+            if (masterRegister == null) return -1;
+
+            _context.MasterRegisters.Remove(masterRegister);
+            _context.SaveChanges();
+            return masterRegister.ID;
         }
 
         public List<Core.Domain.Store.MasterRegister.MasterRegister> GetAllMasterRegisterOfStore(int storeID)

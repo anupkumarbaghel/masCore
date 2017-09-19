@@ -8,8 +8,8 @@ using MAS.Repository;
 namespace MAS.Repository.Migrations
 {
     [DbContext(typeof(MASDBContext))]
-    [Migration("20170911120819_HeadOfAccountFromTableToHeaderForMeasurementBook")]
-    partial class HeadOfAccountFromTableToHeaderForMeasurementBook
+    [Migration("20170913031632_initialMigration")]
+    partial class initialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -46,7 +46,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Admins");
+                    b.ToTable("Admins","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.Indent.Indent", b =>
@@ -101,7 +101,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("StoreID");
 
-                    b.ToTable("Indents");
+                    b.ToTable("Indents","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.Indent.IndentTable", b =>
@@ -140,7 +140,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("MasterRegisterID");
 
-                    b.ToTable("IndentTables");
+                    b.ToTable("IndentTables","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.MasterRegister.MasterRegister", b =>
@@ -175,7 +175,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("MasterRegisters");
+                    b.ToTable("MasterRegisters","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.MeasurementBook.MeasurementBook", b =>
@@ -233,7 +233,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("StoreID2");
 
-                    b.ToTable("MeasurementBooks");
+                    b.ToTable("MeasurementBooks","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.MeasurementBook.MeasurementBookTable", b =>
@@ -271,7 +271,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("MeasurementBookID");
 
-                    b.ToTable("MeasurementBookTables");
+                    b.ToTable("MeasurementBookTables","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.Store", b =>
@@ -307,7 +307,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasIndex("AdminID");
 
-                    b.ToTable("Stores");
+                    b.ToTable("Stores","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.DTO.DTOOpeningBalance", b =>
@@ -319,7 +319,7 @@ namespace MAS.Repository.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("DTOOpeningBalances");
+                    b.ToTable("DTOOpeningBalances","dbo");
                 });
 
             modelBuilder.Entity("MAS.Core.Domain.Store.Indent.Indent", b =>

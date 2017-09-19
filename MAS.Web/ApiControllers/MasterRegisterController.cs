@@ -31,6 +31,18 @@ namespace MAS.Web.ApiControllers
             return Ok(_masterRegister.CreateMasterRegister(masterRegister));
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult DeleteMasterRegister([FromRoute] int id)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            return Ok(_masterRegister.DeleteMasterRegister(id));
+
+        }
+
 
 
     }

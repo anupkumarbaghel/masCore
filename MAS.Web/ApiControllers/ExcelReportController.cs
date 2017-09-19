@@ -22,7 +22,12 @@ namespace MAS.Web.ApiControllers
             _excelReport = excelReport;
             _env = env;
         }
-
+        [HttpGet]
+        public IActionResult GetYourQuestion()
+        {
+           
+            return Ok("what is your name");
+        }
         [HttpPost]
         public IActionResult PostGenerateExcelReport([FromBody] DTOExcelReportInput excelReportInput)
         {
@@ -34,7 +39,7 @@ namespace MAS.Web.ApiControllers
             MemoryStream msExcelReport = _excelReport.GenerateExcelReport(excelReportInput);
 
             string sWebRootFolder = _env.WebRootPath;
-            string pathFileName = @"report/"+excelReportInput.StoreName;
+            string pathFileName = @"report/" + excelReportInput.StoreName;
             string fileName = @"MAS Account.xlsx";
             string conbinedPath = Path.Combine(pathFileName, fileName);
             string reportURL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, conbinedPath);

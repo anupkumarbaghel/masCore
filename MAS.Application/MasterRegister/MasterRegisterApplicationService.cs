@@ -18,6 +18,11 @@ namespace MAS.Application.MasterRegister
             return _masterRegisterRepositoryService.CreateMasterRegister(masterRegister);
         }
 
+        public int DeleteMasterRegister(int ID)
+        {
+            return _masterRegisterRepositoryService.DeleteMasterRegister(ID);
+        }
+
         public List<Core.Domain.Store.MasterRegister.MasterRegister> GetAllMasterRegisterOfStore(int storeID)
         {
             return _masterRegisterRepositoryService.GetAllMasterRegisterOfStore(storeID);

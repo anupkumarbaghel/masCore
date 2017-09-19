@@ -13,3 +13,5 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Release\net
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.AssemblyInfo.cs
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\bin\Release\netcoreapp1.1\MAS.ExcelReport.dll
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\bin\Release\netcoreapp1.1\MAS.ExcelReport.pdb
