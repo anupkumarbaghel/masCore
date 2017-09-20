@@ -22,7 +22,7 @@ namespace MAS.Web.ApiControllers
         [HttpPost]
         public IActionResult PostKeyForVerification([FromBody] Admin admin)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid && string.IsNullOrEmpty(admin.Key))
             {
                 return BadRequest(ModelState);
             }

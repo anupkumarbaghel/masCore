@@ -20,9 +20,14 @@ namespace MAS.Repository.Admin
        
         public Core.Domain.Admin.Admin PostAdmin(Core.Domain.Admin.Admin admin)
         {
-            _context.Update(admin);
+            if (admin.ID > 0) _context.Update(admin);
+            else _context.Add(admin);
+
+
             _context.SaveChanges();
             return admin;
         }
+
+       
     }
 }

@@ -28,6 +28,13 @@ namespace MAS.Repository
             modelBuilder.Entity<MAS.Core.Domain.Store.Store > ().ToTable("Stores", schema: "dbo");
             modelBuilder.Entity<MAS.Core.Domain.Store.MasterRegister.MasterRegister>().ToTable("MasterRegisters", schema: "dbo");
             modelBuilder.Entity<MAS.Core.DTO.DTOOpeningBalance>().ToTable("DTOOpeningBalances", schema: "dbo");
+
+            modelBuilder.Entity<MAS.Core.Domain.Admin.Admin>()
+             .HasIndex(p => p.Key).IsUnique(true);
+
+            modelBuilder.Entity<MAS.Core.Domain.Store.Store>()
+             .HasIndex(p => p.Key).IsUnique(true);
+
             base.OnModelCreating(modelBuilder);
         }
 
