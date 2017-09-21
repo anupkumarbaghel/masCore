@@ -19,6 +19,8 @@ namespace MAS.Repository.MasterRegister
 
         public Core.Domain.Store.MasterRegister.MasterRegister CreateMasterRegister(Core.Domain.Store.MasterRegister.MasterRegister masterRegister)
         {
+            _context.Database.ExecuteSqlCommand("[dbo].[usp_UpdateSerialNumberByOne] @p0,@p1,@P2", masterRegister.SerialNumber, masterRegister.StoreID,masterRegister.ID);
+
             if (masterRegister.ID > 0)
             {
                 _context.Update(masterRegister);
