@@ -5,11 +5,12 @@ using System.Text;
 using System.IO;
 using MAS.Core.Domain.Store.Indent;
 using MAS.Core.Domain.Store.MeasurementBook;
+using MAS.Core.DTO;
 
 namespace MAS.Core.Interface.ExcelReport
 {
     public interface IGenerateExcelReport
     {
-        MemoryStream GenerateExcelReport(List<MasterRegister> masterRegister, IEnumerable<Indent> indents, IEnumerable<MeasurementBook> mbs,string storeName,List<DTO.DTOOpeningBalance> openingBalances);
+        MemoryStream GenerateExcelReport(List<MasterRegister> masterRegister, IEnumerable<Indent> indents, IEnumerable<MeasurementBook> mbs, DTOExcelReportInput dTOExcelReportInput, List<DTO.DTOOpeningBalance> openingBalances);
     }
 }

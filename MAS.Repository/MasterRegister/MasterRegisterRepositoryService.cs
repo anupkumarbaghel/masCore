@@ -38,6 +38,9 @@ namespace MAS.Repository.MasterRegister
         {
             Core.Domain.Store.MasterRegister.MasterRegister masterRegister = _context.MasterRegisters.SingleOrDefault(e => e.ID == ID);
             if (masterRegister == null) return -1;
+            masterRegister.SerialNumber = -1;
+
+            _context.Database.ExecuteSqlCommand("[dbo].[usp_UpdateSerialNumberByOne] @p0,@p1,@P2", masterRegister.SerialNumber, masterRegister.StoreID, masterRegister.ID);
 
             _context.MasterRegisters.Remove(masterRegister);
             _context.SaveChanges();

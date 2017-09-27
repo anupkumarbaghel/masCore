@@ -8,12 +8,13 @@ using System.IO;
 using MAS.Core.Domain.Store.Indent;
 using MAS.Core.Domain.Store.MeasurementBook;
 using System.Linq;
+using MAS.Core.DTO;
 
 namespace MAS.ExcelReport
 {
     public class GenerateExcelReport : IGenerateExcelReport
     {
-        MemoryStream IGenerateExcelReport.GenerateExcelReport(List<MasterRegister> masterRegister,IEnumerable<Indent> indents,IEnumerable<MeasurementBook> mbs,string storeName,List<MAS.Core.DTO.DTOOpeningBalance> openingBalances)
+        MemoryStream IGenerateExcelReport.GenerateExcelReport(List<MasterRegister> masterRegister,IEnumerable<Indent> indents,IEnumerable<MeasurementBook> mbs, DTOExcelReportInput dTOExcelReportInput, List<MAS.Core.DTO.DTOOpeningBalance> openingBalances)
         {
             ExcelPackage exlPackage = new ExcelPackage();
             ExcelWorksheet MASReport = exlPackage.Workbook.Worksheets.Add("MAS Report");
@@ -27,8 +28,8 @@ namespace MAS.ExcelReport
             MASReport.Row(4).Height = 50;
 
             int row = 1, col = 1, rowSpan = 0, colSpan = 4;
-            string cellValue = storeName;
-            WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 14);
+            string cellValue = storeHeaderName(dTOExcelReportInput);
+            WorkSheetWriter.SetCell(MASReport, cellValue, row, col, rowSpan, colSpan, isBold: true, textSize: 12);
 
             ///////
             row++; col = 1; rowSpan = 3; colSpan = 0;
@@ -92,6 +93,23 @@ namespace MAS.ExcelReport
                 exlPackage.SaveAs(ms);
                 return ms;
           
+        }
+
+        private string storeHeaderName(DTOExcelReportInput dTOExcelReportInput)
+        {
+            string result = string.Empty;
+            string fromdate=string.Empty, todate=string.Empty;
+            if (dTOExcelReportInput.StartDate != null)
+                fromdate = dTOExcelReportInput.StartDate.ToDate();
+            if (dTOExcelReportInput.EndDate != null)
+                todate = dTOExcelReportInput.EndDate.ToDate();
+
+            result = dTOExcelReportInput.StoreName;
+            if (fromdate != string.Empty && todate != string.Empty)
+            {
+                result = result + " " + fromdate + " to " + todate;
+            }
+            return result;
         }
     }
 }

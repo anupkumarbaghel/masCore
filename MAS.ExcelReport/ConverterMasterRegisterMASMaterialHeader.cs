@@ -10,8 +10,9 @@ namespace MAS.ExcelReport
     {
         private List<MasterLevel3Register> MasterRegToLevel3Reg(List<MasterRegister> registers)
         {
+            var orderRegister  = registers.OrderBy(e => e.SerialNumber);
             List<MasterLevel3Register> Level3Register = new List<MasterLevel3Register>();
-            foreach (MasterRegister register in registers)
+            foreach (MasterRegister register in orderRegister)
             {
                 MasterLevel3Register l3reg = new MasterLevel3Register()
                 {

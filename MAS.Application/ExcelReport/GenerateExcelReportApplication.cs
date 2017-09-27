@@ -9,6 +9,7 @@ using MAS.Core.Interface.Repository.MasterRegister;
 using MAS.Core.DTO;
 using MAS.Core.Interface.Repository.Indent;
 using MAS.Core.Interface.Repository.MeasurementBook;
+using System.Linq;
 
 namespace MAS.Application.ExcelReport
 {
@@ -34,7 +35,7 @@ namespace MAS.Application.ExcelReport
             var indents = _indentService.GetAllIndentExcelReport(excelReportInputModel);
             var mbs = _measurementBookService.GetAllMeasurementForExcelReport(excelReportInputModel);
             List<DTOOpeningBalance> openigBalances = _masterRegisterRepositoryService.GetOpeningBalance(excelReportInputModel.StoreID, excelReportInputModel.StartDate);
-            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs, excelReportInputModel.StoreName, openigBalances);
+            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs, excelReportInputModel, openigBalances);
         }
     }
 }

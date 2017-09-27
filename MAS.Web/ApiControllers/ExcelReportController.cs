@@ -40,7 +40,7 @@ namespace MAS.Web.ApiControllers
 
             string sWebRootFolder = _env.WebRootPath;
             string pathFileName = @"report/" + excelReportInput.StoreName;
-            string fileName = @"MAS Account.xlsx";
+            string fileName = fileOfMasAccountName(excelReportInput);
             string conbinedPath = Path.Combine(pathFileName, fileName);
             string reportURL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, conbinedPath);
             string filePath = Path.Combine(sWebRootFolder, conbinedPath);
@@ -59,9 +59,19 @@ namespace MAS.Web.ApiControllers
             return Ok(excelReportInput);
         }
 
-        
+        private string fileOfMasAccountName(DTOExcelReportInput excelReportInput)
+        {
+            string result = string.Empty;
+            string startDate = string.Empty, endDate = string.Empty;
+            if (excelReportInput.StartDate != null && excelReportInput.EndDate != null)
+            {
+                startDate = Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy");
+                endDate = Convert.ToDateTime(excelReportInput.EndDate).ToString("dd.MM.yyyy");
+            }
 
+           result=   @"MAS Account_" + excelReportInput.StoreName+"_"+startDate+"_"+endDate + ".xlsx";
 
-
+            return result;
+        }
     }
 }

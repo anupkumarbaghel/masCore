@@ -18,7 +18,14 @@ namespace MAS.Web.ApiControllers
         public IActionResult GetAllMasterRegisterOfStore(string storeID)
         {
             int stID = int.Parse(storeID);
-            return Ok(_masterRegister.GetAllMasterRegisterOfStore(stID));
+            var masterRegisters = _masterRegister.GetAllMasterRegisterOfStore(stID);
+
+            MasterRegister masterSelectOption = new MasterRegister {
+                ID=0, MaterialNameWithDescription="Please Select", StoreID=stID
+            };
+            masterRegisters.Insert(0, masterSelectOption);
+
+            return Ok(masterRegisters);
         }
 
         [HttpPost]
