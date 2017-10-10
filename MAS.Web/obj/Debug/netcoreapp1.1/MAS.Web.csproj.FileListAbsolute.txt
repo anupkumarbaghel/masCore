@@ -15,3 +15,5 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Debug\netco
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Debug\netcoreapp1.1\MAS.Web.AssemblyInfo.cs
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Debug\netcoreapp1.1\MAS.Web.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Debug\netcoreapp1.1\MAS.Web.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Debug\netcoreapp1.1\MAS.Web.csproj.CoreCompileInputs.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Debug\netcoreapp1.1\MAS.Web.AssemblyInfoInputs.cache

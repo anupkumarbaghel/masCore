@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "mas.excelreport/1.0.0": {
+      "MAS.ExcelReport/1.0.0": {
         "dependencies": {
           "EPPlus.Core": "1.5.2",
           "MAS.Core": "1.0.0"
@@ -15,7 +15,7 @@
           "MAS.ExcelReport.dll": {}
         }
       },
-      "corecompat.system.drawing/1.0.0-beta006": {
+      "CoreCompat.System.Drawing/1.0.0-beta006": {
         "dependencies": {
           "System.Collections.NonGeneric": "4.3.0",
           "System.Collections.Specialized": "4.0.1",
@@ -26,7 +26,7 @@
           "lib/netstandard1.3/CoreCompat.System.Drawing.dll": {}
         }
       },
-      "epplus.core/1.5.2": {
+      "EPPlus.Core/1.5.2": {
         "dependencies": {
           "CoreCompat.System.Drawing": "1.0.0-beta006",
           "System.Collections.NonGeneric": "4.3.0",
@@ -40,12 +40,12 @@
           "lib/netstandard1.3/EPPlus.Core.dll": {}
         }
       },
-      "system.collections.nongeneric/4.3.0": {
+      "System.Collections.NonGeneric/4.3.0": {
         "runtime": {
           "lib/netstandard1.3/System.Collections.NonGeneric.dll": {}
         }
       },
-      "system.collections.specialized/4.0.1": {
+      "System.Collections.Specialized/4.0.1": {
         "dependencies": {
           "System.Collections.NonGeneric": "4.3.0"
         },
@@ -53,12 +53,12 @@
           "lib/netstandard1.3/System.Collections.Specialized.dll": {}
         }
       },
-      "system.componentmodel.primitives/4.1.0": {
+      "System.ComponentModel.Primitives/4.1.0": {
         "runtime": {
           "lib/netstandard1.0/System.ComponentModel.Primitives.dll": {}
         }
       },
-      "system.componentmodel.typeconverter/4.1.0": {
+      "System.ComponentModel.TypeConverter/4.1.0": {
         "dependencies": {
           "System.Collections.NonGeneric": "4.3.0",
           "System.Collections.Specialized": "4.0.1",
@@ -68,17 +68,17 @@
           "lib/netstandard1.5/System.ComponentModel.TypeConverter.dll": {}
         }
       },
-      "system.data.common/4.3.0": {
+      "System.Data.Common/4.3.0": {
         "runtime": {
           "lib/netstandard1.2/System.Data.Common.dll": {}
         }
       },
-      "system.drawing.primitives/4.0.0": {
+      "System.Drawing.Primitives/4.0.0": {
         "runtime": {
           "lib/netstandard1.1/System.Drawing.Primitives.dll": {}
         }
       },
-      "system.security.cryptography.pkcs/4.3.0": {
+      "System.Security.Cryptography.Pkcs/4.3.0": {
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Security.Cryptography.Pkcs.dll": {
             "rid": "unix",
@@ -90,7 +90,7 @@
           }
         }
       },
-      "system.text.encoding.codepages/4.3.0": {
+      "System.Text.Encoding.CodePages/4.3.0": {
         "runtimeTargets": {
           "runtimes/unix/lib/netstandard1.3/System.Text.Encoding.CodePages.dll": {
             "rid": "unix",
@@ -102,17 +102,17 @@
           }
         }
       },
-      "system.xml.xmldocument/4.3.0": {
+      "System.Xml.XmlDocument/4.3.0": {
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
       },
-      "system.xml.xpath/4.3.0": {
+      "System.Xml.XPath/4.3.0": {
         "runtime": {
           "lib/netstandard1.3/System.Xml.XPath.dll": {}
         }
       },
-      "system.xml.xpath.xmldocument/4.3.0": {
+      "System.Xml.XPath.XmlDocument/4.3.0": {
         "dependencies": {
           "System.Xml.XPath": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
@@ -121,7 +121,7 @@
           "lib/netstandard1.3/System.Xml.XPath.XmlDocument.dll": {}
         }
       },
-      "mas.core/1.0.0": {
+      "MAS.Core/1.0.0": {
         "runtime": {
           "MAS.Core.dll": {}
         }
@@ -129,103 +129,103 @@
     }
   },
   "libraries": {
-    "mas.excelreport/1.0.0": {
+    "MAS.ExcelReport/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "corecompat.system.drawing/1.0.0-beta006": {
+    "CoreCompat.System.Drawing/1.0.0-beta006": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-KOBeVy8FHx9zkXrIZAM8OdXPrimROmvfB02fOegrYIelNN/zWhsOwzONgD7gw7wOTJgAFfdwpme5CiMraJj47Q==",
       "path": "corecompat.system.drawing/1.0.0-beta006",
       "hashPath": "corecompat.system.drawing.1.0.0-beta006.nupkg.sha512"
     },
-    "epplus.core/1.5.2": {
+    "EPPlus.Core/1.5.2": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-f6/m++BZf0XL3Bw9AH5k1tncOT74AZI9rJbG/7F8RNoK+jjoCsxTHW3JRSBP+Kyhch4VPkMV5hfM57ocBZCRaw==",
       "path": "epplus.core/1.5.2",
       "hashPath": "epplus.core.1.5.2.nupkg.sha512"
     },
-    "system.collections.nongeneric/4.3.0": {
+    "System.Collections.NonGeneric/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
       "path": "system.collections.nongeneric/4.3.0",
       "hashPath": "system.collections.nongeneric.4.3.0.nupkg.sha512"
     },
-    "system.collections.specialized/4.0.1": {
+    "System.Collections.Specialized/4.0.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-/HKQyVP0yH1I0YtK7KJL/28snxHNH/bi+0lgk/+MbURF6ULhAE31MDI+NZDerNWu264YbxklXCCygISgm+HMug==",
       "path": "system.collections.specialized/4.0.1",
       "hashPath": "system.collections.specialized.4.0.1.nupkg.sha512"
     },
-    "system.componentmodel.primitives/4.1.0": {
+    "System.ComponentModel.Primitives/4.1.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-sc/7eVCdxPrp3ljpgTKVaQGUXiW05phNWvtv/m2kocXqrUQvTVWKou1Edas2aDjTThLPZOxPYIGNb/HN0QjURg==",
       "path": "system.componentmodel.primitives/4.1.0",
       "hashPath": "system.componentmodel.primitives.4.1.0.nupkg.sha512"
     },
-    "system.componentmodel.typeconverter/4.1.0": {
+    "System.ComponentModel.TypeConverter/4.1.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-MnDAlaeJZy9pdB5ZdOlwdxfpI+LJQ6e0hmH7d2+y2LkiD8DRJynyDYl4Xxf3fWFm7SbEwBZh4elcfzONQLOoQw==",
       "path": "system.componentmodel.typeconverter/4.1.0",
       "hashPath": "system.componentmodel.typeconverter.4.1.0.nupkg.sha512"
     },
-    "system.data.common/4.3.0": {
+    "System.Data.Common/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lm6E3T5u7BOuEH0u18JpbJHxBfOJPuCyl4Kg1RH10ktYLp5uEEE1xKrHW56/We4SnZpGAuCc9N0MJpSDhTHZGQ==",
       "path": "system.data.common/4.3.0",
       "hashPath": "system.data.common.4.3.0.nupkg.sha512"
     },
-    "system.drawing.primitives/4.0.0": {
+    "System.Drawing.Primitives/4.0.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-9lVRG1voBwzLGZkf1XFJrobdZDZ5ZHMU4FVTbXAbzehpN90yYgkUeo9GoEYdvkt/EXaaHZJAeuffXP4JBbY+Ig==",
       "path": "system.drawing.primitives/4.0.0",
       "hashPath": "system.drawing.primitives.4.0.0.nupkg.sha512"
     },
-    "system.security.cryptography.pkcs/4.3.0": {
+    "System.Security.Cryptography.Pkcs/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-Ks0AAotG7oPD9WZOW6k2vUQ2I5ZPQLsaVlRdpRh131EIVR5Rgm4qz0koaO4D01NWavD0FYV09Op+3GuzM7zbwA==",
       "path": "system.security.cryptography.pkcs/4.3.0",
       "hashPath": "system.security.cryptography.pkcs.4.3.0.nupkg.sha512"
     },
-    "system.text.encoding.codepages/4.3.0": {
+    "System.Text.Encoding.CodePages/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-IRiEFUa5b/Gs5Egg8oqBVoywhtOeaO2KOx3j0RfcYY/raxqBuEK7NXRDgOwtYM8qbi+7S4RPXUbNt+ZxyY0/NQ==",
       "path": "system.text.encoding.codepages/4.3.0",
       "hashPath": "system.text.encoding.codepages.4.3.0.nupkg.sha512"
     },
-    "system.xml.xmldocument/4.3.0": {
+    "System.Xml.XmlDocument/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "path": "system.xml.xmldocument/4.3.0",
       "hashPath": "system.xml.xmldocument.4.3.0.nupkg.sha512"
     },
-    "system.xml.xpath/4.3.0": {
+    "System.Xml.XPath/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-v1JQ5SETnQusqmS3RwStF7vwQ3L02imIzl++sewmt23VGygix04pEH+FCj1yWb+z4GDzKiljr1W7Wfvrx0YwgA==",
       "path": "system.xml.xpath/4.3.0",
       "hashPath": "system.xml.xpath.4.3.0.nupkg.sha512"
     },
-    "system.xml.xpath.xmldocument/4.3.0": {
+    "System.Xml.XPath.XmlDocument/4.3.0": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-A/uxsWi/Ifzkmd4ArTLISMbfFs6XpRPsXZonrIqyTY70xi8t+mDtvSM5Os0RqyRDobjMBwIDHDL4NOIbkDwf7A==",
       "path": "system.xml.xpath.xmldocument/4.3.0",
       "hashPath": "system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
     },
-    "mas.core/1.0.0": {
+    "MAS.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

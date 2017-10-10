@@ -59,10 +59,38 @@ namespace MAS.ExcelReport
             cell.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
             cell.Style.Numberformat.Format = "0.00";
             //if(isBackColorYellow) cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Yellow);
-            char ltrcell=  cell.Address.ToCharArray()[0];
-            string formula ="SUM("+ ltrcell + startRow.ToString() + ":" + ltrcell + endRow+")";
-            cell.Formula = formula;
+
+            string ltrcell = GetExcelColumnName(col);
+
+
+
+            if (startRow > endRow)
+            {
+                cell.Value = 0;
+            }
+            else
+            {
+                string formula = "SUM(" + ltrcell + startRow.ToString() + ":" + ltrcell + endRow + ")";
+                cell.Formula = formula;
+            }
+
+
             return cell.Start.Column;
+        }
+        private static string GetExcelColumnName(int columnNumber)
+        {
+            int dividend = columnNumber;
+            string columnName = String.Empty;
+            int modulo;
+
+            while (dividend > 0)
+            {
+                modulo = (dividend - 1) % 26;
+                columnName = Convert.ToChar(65 + modulo).ToString() + columnName;
+                dividend = (int)((dividend - modulo) / 26);
+            }
+
+            return columnName;
         }
         public static string SetClosingBalanceFormula(ExcelWorksheet ws, int row, int col, int rowSpan, int colSpan, int receiveRow, int issueRow, bool isBold = false, float textSize = 9, bool isBackColorYellow = false)
         {
@@ -78,7 +106,7 @@ namespace MAS.ExcelReport
             cell.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
             cell.Style.Numberformat.Format = "0.00";
             //if(isBackColorYellow) cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.Yellow);
-            char ltrcell = cell.Address.ToCharArray()[0];
+            string ltrcell = GetExcelColumnName(col);
             string formula = ltrcell + receiveRow.ToString() + "-" + ltrcell + issueRow.ToString();
             cell.Formula = formula;
             return cell.Address;

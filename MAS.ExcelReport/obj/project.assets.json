@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "targets": {
     ".NETCoreApp,Version=v1.1": {
       "CoreCompat.System.Drawing/1.0.0-beta006": {
@@ -2477,6 +2477,12 @@
         "framework": ".NETCoreApp,Version=v1.1",
         "dependencies": {
           "Microsoft.NETCore.App": "1.1.2"
+        },
+        "compile": {
+          "bin/placeholder/MAS.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/MAS.Core.dll": {}
         }
       }
     }
@@ -7570,15 +7576,28 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\Users\\anupk\\documents\\visual studio 2017\\Projects\\MAS\\MAS.ExcelReport\\MAS.ExcelReport.csproj",
       "projectName": "MAS.ExcelReport",
       "projectPath": "C:\\Users\\anupk\\documents\\visual studio 2017\\Projects\\MAS\\MAS.ExcelReport\\MAS.ExcelReport.csproj",
+      "packagesPath": "C:\\Users\\anupk\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\anupk\\documents\\visual studio 2017\\Projects\\MAS\\MAS.ExcelReport\\obj\\",
       "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\anupk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
       "originalTargetFrameworks": [
         "netcoreapp1.1"
       ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
       "frameworks": {
         "netcoreapp1.1": {
           "projectReferences": {
@@ -7587,6 +7606,11 @@
             }
           }
         }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
       }
     },
     "frameworks": {
