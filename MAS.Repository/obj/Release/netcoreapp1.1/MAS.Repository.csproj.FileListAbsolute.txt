@@ -7,3 +7,5 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Rele
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.AssemblyInfo.cs
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.csproj.CoreCompileInputs.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.AssemblyInfoInputs.cache

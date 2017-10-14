@@ -1,7 +1,9 @@
-﻿using MAS.Core.Interface.Application.MasterRegister;
+﻿using MAS.Core.DTO;
+using MAS.Core.Interface.Application.MasterRegister;
 using MAS.Core.Interface.Repository.MasterRegister;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace MAS.Application.MasterRegister
 {
@@ -23,9 +25,23 @@ namespace MAS.Application.MasterRegister
             return _masterRegisterRepositoryService.DeleteMasterRegister(ID);
         }
 
-        public List<Core.Domain.Store.MasterRegister.MasterRegister> GetAllMasterRegisterOfStore(int storeID)
+        public List<MAS.Core.ViewModel.MasterRegisterExtension> GetAllMasterRegisterOfStore(int storeID)
         {
-            return _masterRegisterRepositoryService.GetAllMasterRegisterOfStore(storeID);
+            List<MAS.Core.ViewModel.MasterRegisterExtension> listMasterRegister = new List<Core.ViewModel.MasterRegisterExtension>();
+            var masterRegisters=_masterRegisterRepositoryService.GetAllMasterRegisterOfStore(storeID);
+            List<DTOOpeningBalance> openigBalances = _masterRegisterRepositoryService.GetOpeningBalance(storeID, DateTime.Now.AddDays(1));
+            foreach (var mr in masterRegisters)
+            {
+                MAS.Core.ViewModel.MasterRegisterExtension mre = new Core.ViewModel.MasterRegisterExtension();
+                mre.ID = mr.ID;
+                mre.SerialNumber = mr.SerialNumber;
+                mre.MaterialNameWithDescription = mr.MaterialNameWithDescription;
+                mre.MaterialUnit = mr.MaterialUnit;
+                mre.MaterialRate = mr.MaterialRate;
+                mre.Quantity = openigBalances.Where(e => e.ID == mr.ID).Select(e => e.OpeningBalance).FirstOrDefault();
+                listMasterRegister.Add(mre);
+            }
+            return listMasterRegister;
         }
     }
 }

@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v1.1": {
-      "mas.application/1.0.0": {
+      "MAS.Application/1.0.0": {
         "dependencies": {
           "MAS.Core": "1.0.0"
         },
@@ -14,7 +14,7 @@
           "MAS.Application.dll": {}
         }
       },
-      "mas.core/1.0.0": {
+      "MAS.Core/1.0.0": {
         "runtime": {
           "MAS.Core.dll": {}
         }
@@ -22,12 +22,12 @@
     }
   },
   "libraries": {
-    "mas.application/1.0.0": {
+    "MAS.Application/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "mas.core/1.0.0": {
+    "MAS.Core/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

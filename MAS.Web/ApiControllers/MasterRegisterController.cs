@@ -20,7 +20,8 @@ namespace MAS.Web.ApiControllers
             int stID = int.Parse(storeID);
             var masterRegisters = _masterRegister.GetAllMasterRegisterOfStore(stID);
 
-            MasterRegister masterSelectOption = new MasterRegister {
+            MAS.Core.ViewModel.MasterRegisterExtension masterSelectOption = new MAS.Core.ViewModel.MasterRegisterExtension
+            {
                 ID=0, MaterialNameWithDescription="Please Select", StoreID=stID
             };
             masterRegisters.Insert(0, masterSelectOption);

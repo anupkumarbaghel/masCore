@@ -7,3 +7,5 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Rel
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.AssemblyInfo.cs
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.pdb
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.csproj.CoreCompileInputs.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.AssemblyInfoInputs.cache

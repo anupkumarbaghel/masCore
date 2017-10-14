@@ -7,3 +7,5 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Application\obj\Rel
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Application\obj\Release\netcoreapp1.1\MAS.Application.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Application\obj\Release\netcoreapp1.1\MAS.Application.pdb
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Application\obj\Release\netcoreapp1.1\MAS.Application.csprojResolveAssemblyReference.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Application\obj\Release\netcoreapp1.1\MAS.Application.csproj.CoreCompileInputs.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Application\obj\Release\netcoreapp1.1\MAS.Application.AssemblyInfoInputs.cache

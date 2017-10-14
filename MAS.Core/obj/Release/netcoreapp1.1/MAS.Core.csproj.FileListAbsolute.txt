@@ -5,3 +5,5 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Core\obj\Release\ne
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Core\obj\Release\netcoreapp1.1\MAS.Core.dll
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Core\obj\Release\netcoreapp1.1\MAS.Core.pdb
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Core\obj\Release\netcoreapp1.1\MAS.Core.csprojResolveAssemblyReference.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Core\obj\Release\netcoreapp1.1\MAS.Core.csproj.CoreCompileInputs.cache
+C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Core\obj\Release\netcoreapp1.1\MAS.Core.AssemblyInfoInputs.cache
