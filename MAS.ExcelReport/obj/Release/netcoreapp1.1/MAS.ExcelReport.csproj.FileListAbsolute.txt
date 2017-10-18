@@ -9,3 +9,14 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Rel
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.pdb
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.csproj.CoreCompileInputs.cache
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.AssemblyInfoInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\bin\Release\netcoreapp1.1\MAS.ExcelReport.deps.json
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\bin\Release\netcoreapp1.1\MAS.ExcelReport.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\bin\Release\netcoreapp1.1\MAS.ExcelReport.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\bin\Release\netcoreapp1.1\MAS.Core.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\bin\Release\netcoreapp1.1\MAS.Core.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.csprojResolveAssemblyReference.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.csproj.CoreCompileInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.AssemblyInfoInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.AssemblyInfo.cs
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.ExcelReport\obj\Release\netcoreapp1.1\MAS.ExcelReport.pdb

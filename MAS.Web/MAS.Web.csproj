@@ -12,6 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Remove="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Remove="Properties\PublishProfiles\MAS-App - Web Deploy.pubxml" />
+    <None Remove="Properties\PublishProfiles\storesupervision - FTP.pubxml" />
+    <None Remove="Properties\PublishProfiles\storesupervision - Web Deploy.pubxml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="wwwroot\js\inline.bundle.js" />
     <Content Include="wwwroot\js\inline.bundle.js.map" />
     <Content Include="wwwroot\js\polyfills.bundle.js.map" />
@@ -40,6 +48,9 @@
     <ProjectReference Include="..\MAS.Core\MAS.Core.csproj" />
     <ProjectReference Include="..\MAS.ExcelReport\MAS.ExcelReport.csproj" />
     <ProjectReference Include="..\MAS.Repository\MAS.Repository.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
 
 </Project>

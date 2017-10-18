@@ -188,6 +188,17 @@ namespace MAS.Repository.Migrations
                     b.Property<string>("AggrementNumber")
                         .HasMaxLength(200);
 
+                    b.Property<DateTime?>("BillDate");
+
+                    b.Property<string>("BillMBNo")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("BillNo")
+                        .HasMaxLength(200);
+
+                    b.Property<string>("BillPageNo")
+                        .HasMaxLength(200);
+
                     b.Property<string>("CreatedBy");
 
                     b.Property<DateTime>("CreatedDate");

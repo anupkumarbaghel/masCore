@@ -9,3 +9,14 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Rele
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.pdb
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.csproj.CoreCompileInputs.cache
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.AssemblyInfoInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\bin\Release\netcoreapp1.1\MAS.Repository.deps.json
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\bin\Release\netcoreapp1.1\MAS.Repository.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\bin\Release\netcoreapp1.1\MAS.Repository.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\bin\Release\netcoreapp1.1\MAS.Core.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\bin\Release\netcoreapp1.1\MAS.Core.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.csprojResolveAssemblyReference.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.csproj.CoreCompileInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.AssemblyInfoInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.AssemblyInfo.cs
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Repository\obj\Release\netcoreapp1.1\MAS.Repository.pdb

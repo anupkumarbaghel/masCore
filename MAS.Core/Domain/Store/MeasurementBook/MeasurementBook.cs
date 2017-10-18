@@ -33,5 +33,13 @@ namespace MAS.Core.Domain.Store.MeasurementBook
         public virtual string MeasurementBookStatus { get; set; }
 
         public virtual int StoreID { get; set; }
+
+        [StringLength(200)]
+        public virtual string BillNo { get; set; }
+        [StringLength(200)]
+        public virtual string BillMBNo { get; set; }
+        [StringLength(200)]
+        public virtual string BillPageNo { get; set; }
+        public virtual DateTime? BillDate { get; set; }
     }
 }

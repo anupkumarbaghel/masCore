@@ -17,3 +17,22 @@ C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\bin\Release\net
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\bin\Release\netcoreapp1.1\MAS.ExcelReport.pdb
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.csproj.CoreCompileInputs.cache
 C:\Users\anupk\documents\visual studio 2017\Projects\MAS\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.AssemblyInfoInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Web.deps.json
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Web.runtimeconfig.json
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Web.runtimeconfig.dev.json
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Web.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Web.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Application.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Core.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.ExcelReport.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Repository.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Application.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Core.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.ExcelReport.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\bin\Release\netcoreapp1.1\MAS.Repository.pdb
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.csprojResolveAssemblyReference.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.csproj.CoreCompileInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.AssemblyInfoInputs.cache
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.AssemblyInfo.cs
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.dll
+C:\Users\Zac\Documents\GitHub\masCore\MAS.Web\obj\Release\netcoreapp1.1\MAS.Web.pdb
