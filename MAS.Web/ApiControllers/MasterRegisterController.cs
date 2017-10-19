@@ -1,6 +1,7 @@
 using MAS.Core.Domain.Store.MasterRegister;
 using MAS.Core.Interface.Application.MasterRegister;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace MAS.Web.ApiControllers
 {
@@ -18,7 +19,7 @@ namespace MAS.Web.ApiControllers
         public IActionResult GetAllMasterRegisterOfStore(string storeID)
         {
             int stID = int.Parse(storeID);
-            var masterRegisters = _masterRegister.GetAllMasterRegisterOfStore(stID);
+            var masterRegisters = _masterRegister.GetAllMasterRegisterOfStore(stID,DateTime.Now);
 
             MAS.Core.ViewModel.MasterRegisterExtension masterSelectOption = new MAS.Core.ViewModel.MasterRegisterExtension
             {

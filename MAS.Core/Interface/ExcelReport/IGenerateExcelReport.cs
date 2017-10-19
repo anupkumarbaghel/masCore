@@ -11,6 +11,9 @@ namespace MAS.Core.Interface.ExcelReport
 {
     public interface IGenerateExcelReport
     {
-        MemoryStream GenerateExcelReport(List<MasterRegister> masterRegister, IEnumerable<Indent> indents, IEnumerable<MeasurementBook> mbs, DTOExcelReportInput dTOExcelReportInput, List<DTO.DTOOpeningBalance> openingBalances);
+        MemoryStream GenerateExcelMASReport(List<MasterRegister> masterRegister, IEnumerable<Indent> indents, IEnumerable<MeasurementBook> mbs, DTOExcelReportInput dTOExcelReportInput, List<DTO.DTOOpeningBalance> openingBalances);
+        MemoryStream GenerateExcelBalanceQuantityReport(List<MAS.Core.ViewModel.MasterRegisterExtension> listMasterRegisterExt, DTOExcelReportInput dTOExcelReportInput);
+        MemoryStream GenerateExcelAmountBalanceQuantityReport(List<MAS.Core.ViewModel.MasterRegisterExtension> listMasterRegisterExt, DTOExcelReportInput dTOExcelReportInput);
+        
     }
 }

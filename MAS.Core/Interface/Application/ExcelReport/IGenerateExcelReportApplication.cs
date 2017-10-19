@@ -9,5 +9,8 @@ namespace MAS.Core.Interface.Application.ExcelReport
     public interface IGenerateExcelReportApplication
     {
         MemoryStream GenerateExcelReport(DTOExcelReportInput excelReportInputModel);
+        MemoryStream GenerateExcelBalanceQuantityReport(DTOExcelReportInput excelReportInputModel);
+        MemoryStream GenerateExcelAmountBalanceQuantityReport(DTOExcelReportInput excelReportInputModel);
+        
     }
 }

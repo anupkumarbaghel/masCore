@@ -11,5 +11,6 @@ namespace MAS.Core.DTO
         public virtual string StoreName { get; set; }
         public virtual string ReportUrl { get; set; }
         public virtual int StoreID { get; set; }
+        public virtual string ReportType { get; set; }
     }
 }

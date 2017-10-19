@@ -10,6 +10,7 @@ using MAS.Core.DTO;
 using MAS.Core.Interface.Repository.Indent;
 using MAS.Core.Interface.Repository.MeasurementBook;
 using System.Linq;
+using MAS.Core.Interface.Application.MasterRegister;
 
 namespace MAS.Application.ExcelReport
 {
@@ -19,15 +20,19 @@ namespace MAS.Application.ExcelReport
         IMasterRegisterRepositoryService _masterRegisterRepositoryService;
         IIendentRepositoryService _indentService;
         IMeasurementBookRepositoryService _measurementBookService;
+        IMasterRegisterApplicationService _masterRegisterApplication;
+
         public GenerateExcelReportApplication(IGenerateExcelReport generateExcelReport
             , IMasterRegisterRepositoryService masterRegisterRepositoryService
             , IIendentRepositoryService indentService
-            , IMeasurementBookRepositoryService measurementBookService)
+            , IMeasurementBookRepositoryService measurementBookService
+            , IMasterRegisterApplicationService masterRegister)
         {
             _generateExcelReport = generateExcelReport;
             _masterRegisterRepositoryService = masterRegisterRepositoryService;
             _indentService = indentService;
             _measurementBookService = measurementBookService;
+            _masterRegisterApplication = masterRegister;
         }
         public MemoryStream GenerateExcelReport(DTOExcelReportInput excelReportInputModel)
         {
@@ -35,7 +40,22 @@ namespace MAS.Application.ExcelReport
             var indents = _indentService.GetAllIndentExcelReport(excelReportInputModel);
             var mbs = _measurementBookService.GetAllMeasurementForExcelReport(excelReportInputModel);
             List<DTOOpeningBalance> openigBalances = _masterRegisterRepositoryService.GetOpeningBalance(excelReportInputModel.StoreID, excelReportInputModel.StartDate);
-            return _generateExcelReport.GenerateExcelReport(masterRegisters,indents,mbs, excelReportInputModel, openigBalances);
+            return _generateExcelReport.GenerateExcelMASReport(masterRegisters,indents,mbs, excelReportInputModel, openigBalances);
         }
+        public MemoryStream GenerateExcelBalanceQuantityReport(DTOExcelReportInput excelReportInputModel)
+        {
+            List<MAS.Core.ViewModel.MasterRegisterExtension> listMasterRegisterExt = 
+                _masterRegisterApplication.GetAllMasterRegisterOfStore(excelReportInputModel.StoreID
+                , Convert.ToDateTime(excelReportInputModel.StartDate));
+            return _generateExcelReport.GenerateExcelBalanceQuantityReport(listMasterRegisterExt, excelReportInputModel);
+        }
+        public MemoryStream GenerateExcelAmountBalanceQuantityReport(DTOExcelReportInput excelReportInputModel)
+        {
+            List<MAS.Core.ViewModel.MasterRegisterExtension> listMasterRegisterExt =
+                _masterRegisterApplication.GetAllMasterRegisterOfStore(excelReportInputModel.StoreID
+                , Convert.ToDateTime(excelReportInputModel.StartDate));
+            return _generateExcelReport.GenerateExcelAmountBalanceQuantityReport(listMasterRegisterExt, excelReportInputModel);
+        }
+
     }
 }

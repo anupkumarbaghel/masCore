@@ -49,7 +49,7 @@ namespace MAS.Repository.MasterRegister
 
         public List<Core.Domain.Store.MasterRegister.MasterRegister> GetAllMasterRegisterOfStore(int storeID)
         {
-            return _context.MasterRegisters.Where(e => e.StoreID == storeID).ToList();
+            return _context.MasterRegisters.Where(e => e.StoreID == storeID).OrderBy(e=>e.SerialNumber).ToList();
         }
 
         public List<DTOOpeningBalance> GetOpeningBalance(int StoreID, DateTime? LastDate)

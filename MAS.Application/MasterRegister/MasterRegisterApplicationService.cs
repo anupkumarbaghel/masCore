@@ -25,11 +25,11 @@ namespace MAS.Application.MasterRegister
             return _masterRegisterRepositoryService.DeleteMasterRegister(ID);
         }
 
-        public List<MAS.Core.ViewModel.MasterRegisterExtension> GetAllMasterRegisterOfStore(int storeID)
+        public List<MAS.Core.ViewModel.MasterRegisterExtension> GetAllMasterRegisterOfStore(int storeID,DateTime date)
         {
             List<MAS.Core.ViewModel.MasterRegisterExtension> listMasterRegister = new List<Core.ViewModel.MasterRegisterExtension>();
             var masterRegisters=_masterRegisterRepositoryService.GetAllMasterRegisterOfStore(storeID);
-            List<DTOOpeningBalance> openigBalances = _masterRegisterRepositoryService.GetOpeningBalance(storeID, DateTime.Now.AddDays(1));
+            List<DTOOpeningBalance> openigBalances = _masterRegisterRepositoryService.GetOpeningBalance(storeID, date);
             foreach (var mr in masterRegisters)
             {
                 MAS.Core.ViewModel.MasterRegisterExtension mre = new Core.ViewModel.MasterRegisterExtension();

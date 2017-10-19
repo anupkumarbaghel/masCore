@@ -25,7 +25,7 @@ namespace MAS.Web.ApiControllers
         [HttpGet]
         public IActionResult GetYourQuestion()
         {
-           
+
             return Ok("what is your name");
         }
         [HttpPost]
@@ -36,11 +36,28 @@ namespace MAS.Web.ApiControllers
                 return BadRequest(ModelState);
             }
 
-            MemoryStream msExcelReport = _excelReport.GenerateExcelReport(excelReportInput);
+            MemoryStream msExcelReport = new MemoryStream();
+            string fileName = string.Empty;
+
+            switch (excelReportInput.ReportType)
+            {
+                case "mas":
+                    msExcelReport = _excelReport.GenerateExcelReport(excelReportInput);
+                    fileName = fileOfMasAccountName(excelReportInput);
+                    break;
+                case "bq":
+                    msExcelReport = _excelReport.GenerateExcelBalanceQuantityReport(excelReportInput);
+                    fileName="Balance Quantity of "+excelReportInput.StoreName+" "+ Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy") + ".xlsx"; ;
+                    break;
+                case "abq":
+                    msExcelReport = _excelReport.GenerateExcelAmountBalanceQuantityReport(excelReportInput);
+                    fileName = "Amount Balance Quantity of " + excelReportInput.StoreName + " " + Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy") + ".xlsx"; ;
+                    break;
+            }
+
 
             string sWebRootFolder = _env.WebRootPath;
-            string pathFileName = @"report/" + excelReportInput.StoreName;
-            string fileName = fileOfMasAccountName(excelReportInput);
+            string pathFileName = @"report/" + excelReportInput.StoreName;  
             string conbinedPath = Path.Combine(pathFileName, fileName);
             string reportURL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, conbinedPath);
             string filePath = Path.Combine(sWebRootFolder, conbinedPath);
@@ -59,6 +76,7 @@ namespace MAS.Web.ApiControllers
             return Ok(excelReportInput);
         }
 
+
         private string fileOfMasAccountName(DTOExcelReportInput excelReportInput)
         {
             string result = string.Empty;
@@ -69,7 +87,7 @@ namespace MAS.Web.ApiControllers
                 endDate = Convert.ToDateTime(excelReportInput.EndDate).ToString("dd.MM.yyyy");
             }
 
-           result=   @"MAS Account_" + excelReportInput.StoreName+"_"+startDate+"_"+endDate + ".xlsx";
+            result = @"MAS Account_" + excelReportInput.StoreName + "_" + startDate + "_" + endDate + ".xlsx";
 
             return result;
         }
