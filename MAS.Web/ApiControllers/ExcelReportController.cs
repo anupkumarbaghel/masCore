@@ -47,17 +47,17 @@ namespace MAS.Web.ApiControllers
                     break;
                 case "bq":
                     msExcelReport = _excelReport.GenerateExcelBalanceQuantityReport(excelReportInput);
-                    fileName="Balance Quantity of "+excelReportInput.StoreName+" "+ Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy") + ".xlsx"; ;
+                    fileName="Balance Quantity of "+excelReportInput.StoreName.Replace("/",string.Empty).Trim() + " "+ Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy") + ".xlsx"; ;
                     break;
                 case "abq":
                     msExcelReport = _excelReport.GenerateExcelAmountBalanceQuantityReport(excelReportInput);
-                    fileName = "Amount Balance Quantity of " + excelReportInput.StoreName + " " + Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy") + ".xlsx"; ;
+                    fileName = "Amount Balance Quantity of " + excelReportInput.StoreName.Replace("/", string.Empty).Trim() + " " + Convert.ToDateTime(excelReportInput.StartDate).ToString("dd.MM.yyyy") + ".xlsx"; ;
                     break;
             }
 
 
             string sWebRootFolder = _env.WebRootPath;
-            string pathFileName = @"report/" + excelReportInput.StoreName;  
+            string pathFileName = @"report/" + excelReportInput.StoreName.Replace("/", string.Empty).Trim();  
             string conbinedPath = Path.Combine(pathFileName, fileName);
             string reportURL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, conbinedPath);
             string filePath = Path.Combine(sWebRootFolder, conbinedPath);
