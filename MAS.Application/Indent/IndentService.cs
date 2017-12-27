@@ -30,9 +30,9 @@ namespace MAS.Application.Indent
             return _IndentService.DeleteIndent(ID);
         }
 
-        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
+        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID,bool isSitework)
         {
-            return _IndentService.GetAllIndentByStatus(indentStatus,storeID);
+            return _IndentService.GetAllIndentByStatus(indentStatus,storeID,isSitework);
         }
 
         public Core.Domain.Store.Indent.Indent GetIndent(long id)
@@ -40,9 +40,9 @@ namespace MAS.Application.Indent
             return _IndentService.GetIndent(id);
         }
 
-        public Core.Domain.Store.Indent.Indent GetOpenIndent(int storeID)
+        public Core.Domain.Store.Indent.Indent GetOpenIndent(int storeID,bool isSitework)
         {
-            return _IndentService.GetOpenIndent(storeID);
+            return _IndentService.GetOpenIndent(storeID,isSitework);
         }
 
         

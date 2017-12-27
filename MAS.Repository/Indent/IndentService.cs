@@ -64,10 +64,10 @@ namespace MAS.Repository.Indent
             return indent.ID;
         }
 
-        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID)
+        public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentByStatus(string indentStatus,int storeID,bool isSitework)
         {
             return _context.Indents
-                .Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID).ToList();
+                .Where(e=>e.IndentStatus==indentStatus && e.StoreID==storeID && e.IsSitework==isSitework).ToList();
         }
         public IEnumerable<Core.Domain.Store.Indent.Indent> GetAllIndentExcelReport(Core.DTO.DTOExcelReportInput excelInputModel)
         {
@@ -86,11 +86,11 @@ namespace MAS.Repository.Indent
                 .FirstOrDefault(e => e.ID == id);
         }
 
-        public Core.Domain.Store.Indent.Indent GetOpenIndent(int storeID)
+        public Core.Domain.Store.Indent.Indent GetOpenIndent(int storeID,bool isSitework)
         {
             return _context.Indents.Include(e=>e.IndentTableCollection)
                 .ThenInclude(f=>f.MasterRegister)
-                .FirstOrDefault(e => e.IndentStatus == "o" && e.StoreID==storeID);
+                .FirstOrDefault(e => e.IndentStatus == "o" && e.StoreID==storeID && e.IsSitework==isSitework);
         }
 
        

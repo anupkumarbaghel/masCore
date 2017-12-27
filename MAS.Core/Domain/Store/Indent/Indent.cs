@@ -31,6 +31,8 @@ namespace MAS.Core.Domain.Store.Indent
 
         public virtual Boolean IsReceive { get; set; }
 
+        public virtual Boolean IsSitework { get; set; }
+
         public virtual int StoreID { get; set; }
 
        

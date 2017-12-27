@@ -15,10 +15,10 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet]
-        public IActionResult GetAllIndentByStatus(string indentStatus,string storeID)
+        public IActionResult GetAllIndentByStatus(string indentStatus,string storeID,bool isSitework)
         {
             int stID = int.Parse(storeID);
-            return Ok(_IndentService.GetAllIndentByStatus(indentStatus, stID));
+            return Ok(_IndentService.GetAllIndentByStatus(indentStatus, stID,isSitework));
         }
 
         [HttpGet("{id}")]
@@ -40,14 +40,14 @@ namespace MAS.Web.ApiControllers
         }
 
         [HttpGet("openindent")]
-        public IActionResult GetOpenIndent(string storeID)
+        public IActionResult GetOpenIndent(string storeID, bool isSitework)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
             int stID = int.Parse(storeID);
-            var indent = _IndentService.GetOpenIndent(stID);
+            var indent = _IndentService.GetOpenIndent(stID,isSitework);
 
             if (indent == null)
             {

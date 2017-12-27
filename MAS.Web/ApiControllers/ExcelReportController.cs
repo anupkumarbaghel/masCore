@@ -58,7 +58,7 @@ namespace MAS.Web.ApiControllers
 
             string sWebRootFolder = _env.WebRootPath;
             string pathFileName = @"report/" + excelReportInput.StoreName.Replace("/", string.Empty).Trim();  
-            string conbinedPath = Path.Combine(pathFileName, fileName);
+            string conbinedPath = Path.Combine(pathFileName, fileName.Replace("/",string.Empty));
             string reportURL = string.Format("{0}://{1}/{2}", Request.Scheme, Request.Host, conbinedPath);
             string filePath = Path.Combine(sWebRootFolder, conbinedPath);
             string directoryfile = Path.Combine(sWebRootFolder, pathFileName);
